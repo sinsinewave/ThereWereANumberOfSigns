@@ -1,0 +1,36 @@
+# Use Kotlin for (NeoForge)
+modLoader = "kotlinforforge"
+loaderVersion = "${loader_version_range}"
+
+license = "${mod_license}"
+# TODO: Issue tracker URL once this thing is on GitHub
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+
+[[mods]] #mandatory
+modId       = "${mod_id}"
+version     = "${mod_version}"
+displayName = "${mod_name}"
+# A URL for the "homepage" for this mod, displayed in the mod UI
+# TODO: Gitted Hub still
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+# TODO: Logo/icon
+#logoFile="signsmod.png"
+#credits=""
+authors = "${mod_authors}"
+description = '''${mod_description}'''
+
+# NeoForge dependency
+[[dependencies."${mod_id}"]]
+modId        = "neoforge"
+type         = "required"
+versionRange = "${neo_version_range}"
+ordering     = "NONE"
+side         = "BOTH"
+
+# Minecraft dependency
+[[dependencies."${mod_id}"]]
+modId        = "minecraft"
+type         = "required"
+versionRange = "${minecraft_version_range}"
+ordering     = "NONE"
+side         = "BOTH"

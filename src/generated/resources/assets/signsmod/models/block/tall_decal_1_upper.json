@@ -1,0 +1,6 @@
+{
+  "parent": "signsmod:block/tall_decal_upper",
+  "textures": {
+    "0": "signsmod:block/tall_decal_1"
+  }
+}
