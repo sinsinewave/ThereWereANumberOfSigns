@@ -2,11 +2,13 @@ package cyou.sinewave.signsmod.block
 
 import cyou.sinewave.signsmod.block.property.DecalCharacter
 import cyou.sinewave.signsmod.block.property.Surface
+import net.minecraft.client.color.block.BlockColor
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.context.BlockPlaceContext
+import net.minecraft.world.level.BlockAndTintGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.Block
@@ -21,13 +23,13 @@ import net.minecraft.world.phys.BlockHitResult
 /**
  * Decal block, essentially a print placed on a surface
  */
-open class DecalBlock(properties: Properties) : TransparentBlock(
+open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock (
     properties
         .noCollission()
         .instabreak()
         .noOcclusion()
         .mapColor(MapColor.NONE)
-) {
+), BlockColor {
     companion object {
         val DECAL_CHARACTER   : Property<DecalCharacter> = DecalCharacter.property
         val SURFACE           : Property<Surface>        = Surface.property
@@ -115,5 +117,19 @@ open class DecalBlock(properties: Properties) : TransparentBlock(
                 DecalCharacter.entries.first()
             }
         ))
+    }
+
+    override fun getColor(
+        state: BlockState,
+        level: BlockAndTintGetter?,
+        pos: BlockPos?,
+        tintIndex: Int
+    ): Int {
+        return if (tintIndex == 1) {
+            this.color
+        }
+        else {
+            0xFFFFFF
+        }
     }
 }

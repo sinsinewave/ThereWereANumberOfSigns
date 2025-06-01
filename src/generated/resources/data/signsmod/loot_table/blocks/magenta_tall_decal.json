@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "signsmod:tall_decal"
+          "name": "signsmod:magenta_tall_decal"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "signsmod:blocks/tall_decal"
+  "random_sequence": "signsmod:blocks/magenta_tall_decal"
 }

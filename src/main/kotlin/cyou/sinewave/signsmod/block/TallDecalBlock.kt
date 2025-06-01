@@ -21,7 +21,7 @@ import net.minecraft.world.phys.BlockHitResult
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
 
-class TallDecalBlock(properties: Properties) : DecalBlock(properties) {
+class TallDecalBlock(properties: Properties, color: Int) : DecalBlock(properties, color) {
     companion object {
         val HALF: Property<DoubleBlockHalf> = BlockStateProperties.DOUBLE_BLOCK_HALF
     }

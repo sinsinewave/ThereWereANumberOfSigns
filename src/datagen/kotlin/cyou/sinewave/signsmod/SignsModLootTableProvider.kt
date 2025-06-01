@@ -30,7 +30,9 @@ class SignsModLootTableProvider(
 
         override fun generate() {
             // Decal blocks drop themselves
-            dropSelf(Blocks.TALL_DECAL.get())
+            for (block in Blocks.TALL_DECALS) {
+                dropSelf(block.get())
+            }
         }
     }
 }

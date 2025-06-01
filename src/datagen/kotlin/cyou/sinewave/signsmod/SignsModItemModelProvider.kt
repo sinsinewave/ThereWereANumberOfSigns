@@ -8,6 +8,10 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper
 class SignsModItemModelProvider(output: PackOutput, existingFileHelper: ExistingFileHelper) :
     ItemModelProvider(output, SignsMod.ID, existingFileHelper) {
     override fun registerModels() {
-        basicItem(Items.TALL_DECAL.get())
+        for (item in Items.TALL_DECALS) {
+            withExistingParent(item.id.toString(), mcLoc("item/generated"))
+                .texture("layer0", "signsmod:item/decal_background")
+                .texture("layer1", "signsmod:item/tall_decal_overlay")
+        }
     }
 }

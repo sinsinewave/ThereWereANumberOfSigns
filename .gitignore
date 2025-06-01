@@ -1,4 +1,5 @@
 .kotlin/
+src/generated/resources/.cache/
 
 # User-specific stuff
 .idea/
