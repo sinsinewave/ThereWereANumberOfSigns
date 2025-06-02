@@ -1,7 +1,7 @@
 package cyou.sinewave.signsmod.item
 
 import cyou.sinewave.signsmod.SignsMod
-import cyou.sinewave.signsmod.block.Blocks
+import cyou.sinewave.signsmod.block.SignsModBlocks
 import net.minecraft.core.registries.Registries
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.BlockItem
@@ -24,7 +24,7 @@ object SignsModItems {
     init {
         // Iterate through tall decal blocks and pick dye colour by index
         // Blocks are inserted into their corresponding array by DyeColor entry order
-        for ((idx, block) in Blocks.TALL_DECALS.withIndex()) {
+        for ((idx, block) in SignsModBlocks.TALL_DECALS.withIndex()) {
             TALL_DECALS.add(REGISTRY.register(block.id.path) { ->
                 DecalBlockItem(
                     block.value(),

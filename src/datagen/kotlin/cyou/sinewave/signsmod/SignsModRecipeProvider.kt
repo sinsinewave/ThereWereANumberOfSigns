@@ -7,6 +7,7 @@ import net.minecraft.data.recipes.RecipeCategory
 import net.minecraft.data.recipes.RecipeOutput
 import net.minecraft.data.recipes.RecipeProvider
 import net.minecraft.data.recipes.ShapedRecipeBuilder
+import net.minecraft.data.recipes.ShapelessRecipeBuilder
 import net.minecraft.world.item.DyeColor
 import net.minecraft.world.item.DyeItem
 import net.minecraft.world.item.Items
@@ -24,6 +25,12 @@ class SignsModRecipeProvider(output: PackOutput, registries: CompletableFuture<H
                 .define('D', DyeItem.byColor(DyeColor.entries[idx]))
                 .unlockedBy("has_paper", has(Items.PAPER))
                 .save(output)
+            // Re-dyeing
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, item.get())
+                .requires(SignsModTags.ItemTags.TALL_DECALS)
+                .requires(DyeItem.byColor(DyeColor.entries[idx]))
+                .unlockedBy("has_paper", has(Items.PAPER))
+                .save(output, "signsmod:${item.id.path}_shapeless")
         }
         // Special no-dye recipe for the white decal
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, SignsModItems.TALL_DECALS[0].toStack(4))

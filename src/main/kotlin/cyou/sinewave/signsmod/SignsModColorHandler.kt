@@ -1,6 +1,6 @@
 package cyou.sinewave.signsmod
 
-import cyou.sinewave.signsmod.block.Blocks
+import cyou.sinewave.signsmod.block.SignsModBlocks
 import cyou.sinewave.signsmod.item.SignsModItems
 import net.minecraft.client.color.block.BlockColor
 import net.minecraft.client.color.item.ItemColor
@@ -23,7 +23,7 @@ object SignsModColorHandler {
 
     @SubscribeEvent
     fun handleBlockTints(event: RegisterColorHandlersEvent.Block) {
-        for (block in Blocks.REGISTRY.entries) {
+        for (block in SignsModBlocks.REGISTRY.entries) {
             if (block.value() is BlockColor) {
                 event.register(block.value() as BlockColor, block.value())
             }

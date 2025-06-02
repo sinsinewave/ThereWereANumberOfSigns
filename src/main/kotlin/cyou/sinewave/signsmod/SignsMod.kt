@@ -1,6 +1,6 @@
 package cyou.sinewave.signsmod
 
-import cyou.sinewave.signsmod.block.Blocks
+import cyou.sinewave.signsmod.block.SignsModBlocks
 import cyou.sinewave.signsmod.item.SignsModItems
 import net.minecraft.client.Minecraft
 import net.neoforged.bus.api.SubscribeEvent
@@ -31,7 +31,7 @@ object SignsMod {
         LOGGER.log(Level.INFO, "There were no signs, now there are")
 
         // Register the KDeferredRegister to the mod-specific event bus
-        Blocks.REGISTRY.register(MOD_BUS)
+        SignsModBlocks.REGISTRY.register(MOD_BUS)
         SignsModItems.REGISTRY.register(MOD_BUS)
         SignsModItems.CREATIVE_TABS.register(MOD_BUS)
 

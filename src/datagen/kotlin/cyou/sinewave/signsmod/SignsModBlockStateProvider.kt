@@ -1,6 +1,6 @@
 package cyou.sinewave.signsmod
 
-import cyou.sinewave.signsmod.block.Blocks
+import cyou.sinewave.signsmod.block.SignsModBlocks
 import cyou.sinewave.signsmod.block.property.DecalCharacter
 import cyou.sinewave.signsmod.block.property.Surface
 import net.minecraft.core.Direction
@@ -16,7 +16,7 @@ class SignsModBlockStateProvider(
 ) : BlockStateProvider(output, SignsMod.ID, fileHelper) {
 
     override fun registerStatesAndModels() {
-        for (block in Blocks.TALL_DECALS) {
+        for (block in SignsModBlocks.TALL_DECALS) {
             val stateBuilder = getMultipartBuilder(block.get())
             for (character in DecalCharacter.entries) {
                 for (half in DoubleBlockHalf.entries) {

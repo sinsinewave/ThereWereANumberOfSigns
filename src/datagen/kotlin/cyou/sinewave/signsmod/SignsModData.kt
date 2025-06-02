@@ -4,14 +4,10 @@ import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.fml.common.Mod
 import net.neoforged.neoforge.data.event.GatherDataEvent
-import org.apache.logging.log4j.LogManager
-import org.apache.logging.log4j.Logger
 
 @Mod(SignsMod.ID)
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 object SignsModData {
-    val LOGGER: Logger = LogManager.getLogger("${SignsMod.ID} Data Generation")
-
     @SubscribeEvent
     fun gatherData(event: GatherDataEvent) {
         event.generator.addProvider(
@@ -25,6 +21,10 @@ object SignsModData {
         event.generator.addProvider(
             event.includeServer(),
             SignsModLootTableProvider(event.generator.packOutput, event.lookupProvider)
+        )
+        event.generator.addProvider(
+            event.includeServer(),
+            SignsModItemTagProvider(event.generator.packOutput, event.lookupProvider, event.existingFileHelper)
         )
         event.generator.addProvider(
             event.includeServer(),

@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour
 import net.neoforged.neoforge.registries.DeferredBlock
 import net.neoforged.neoforge.registries.DeferredRegister
 
-object Blocks {
+object SignsModBlocks {
     val REGISTRY: DeferredRegister.Blocks = DeferredRegister.createBlocks(SignsMod.ID)
     val TALL_DECALS = arrayListOf<DeferredBlock<DecalBlock>>()
 

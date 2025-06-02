@@ -1,6 +1,6 @@
 package cyou.sinewave.signsmod
 
-import cyou.sinewave.signsmod.block.Blocks
+import cyou.sinewave.signsmod.block.SignsModBlocks
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.PackOutput
 import net.minecraft.data.loot.BlockLootSubProvider
@@ -25,12 +25,12 @@ class SignsModLootTableProvider(
         provider: HolderLookup.Provider
     ) : BlockLootSubProvider(setOf(), FeatureFlags.DEFAULT_FLAGS, provider) {
         override fun getKnownBlocks(): Iterable<Block?> {
-            return Blocks.REGISTRY.entries.stream().map { it -> it.value() as Block }.toList()
+            return SignsModBlocks.REGISTRY.entries.stream().map { it -> it.value() as Block }.toList()
         }
 
         override fun generate() {
             // Decal blocks drop themselves
-            for (block in Blocks.TALL_DECALS) {
+            for (block in SignsModBlocks.TALL_DECALS) {
                 dropSelf(block.get())
             }
         }
