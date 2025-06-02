@@ -13,7 +13,7 @@ import net.neoforged.neoforge.registries.DeferredItem
 import net.neoforged.neoforge.registries.DeferredRegister
 
 
-object Items {
+object SignsModItems {
     val REGISTRY: DeferredRegister.Items = DeferredRegister.createItems(SignsMod.ID)
     val CREATIVE_TABS: DeferredRegister<CreativeModeTab> = DeferredRegister.create(
         Registries.CREATIVE_MODE_TAB,

@@ -1,7 +1,7 @@
 package cyou.sinewave.signsmod
 
 import cyou.sinewave.signsmod.block.Blocks
-import cyou.sinewave.signsmod.item.Items
+import cyou.sinewave.signsmod.item.SignsModItems
 import net.minecraft.client.color.block.BlockColor
 import net.minecraft.client.color.item.ItemColor
 import net.neoforged.api.distmarker.Dist
@@ -14,7 +14,7 @@ import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent
 object SignsModColorHandler {
     @SubscribeEvent
     fun handleItemTints(event: RegisterColorHandlersEvent.Item) {
-        for (item in Items.REGISTRY.entries) {
+        for (item in SignsModItems.REGISTRY.entries) {
             if (item.value() is ItemColor) {
                 event.register(item.value() as ItemColor, item.value())
             }

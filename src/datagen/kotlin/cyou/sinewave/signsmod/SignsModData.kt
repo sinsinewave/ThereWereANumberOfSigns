@@ -26,5 +26,9 @@ object SignsModData {
             event.includeServer(),
             SignsModLootTableProvider(event.generator.packOutput, event.lookupProvider)
         )
+        event.generator.addProvider(
+            event.includeServer(),
+            SignsModRecipeProvider(event.generator.packOutput, event.lookupProvider)
+        )
     }
 }

@@ -1,7 +1,7 @@
 package cyou.sinewave.signsmod
 
 import cyou.sinewave.signsmod.block.Blocks
-import cyou.sinewave.signsmod.item.Items
+import cyou.sinewave.signsmod.item.SignsModItems
 import net.minecraft.client.Minecraft
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
@@ -32,8 +32,8 @@ object SignsMod {
 
         // Register the KDeferredRegister to the mod-specific event bus
         Blocks.REGISTRY.register(MOD_BUS)
-        Items.REGISTRY.register(MOD_BUS)
-        Items.CREATIVE_TABS.register(MOD_BUS)
+        SignsModItems.REGISTRY.register(MOD_BUS)
+        SignsModItems.CREATIVE_TABS.register(MOD_BUS)
 
         runForDist(
             clientTarget = {
@@ -46,17 +46,11 @@ object SignsMod {
         )
     }
 
-    /**
-     * Clientside init event
-     */
     @Suppress("unused")
     private fun onClientSetup(event: FMLClientSetupEvent) {
         LOGGER.log(Level.INFO, "Initializing client...")
     }
 
-    /**
-     * Serverside init event
-     */
     @Suppress("unused")
     private fun onServerSetup(event: FMLDedicatedServerSetupEvent) {
         LOGGER.log(Level.INFO, "Server starting...")
