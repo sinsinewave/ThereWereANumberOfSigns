@@ -33,6 +33,7 @@ object SignsMod {
         // Register the KDeferredRegister to the mod-specific event bus
         Blocks.REGISTRY.register(MOD_BUS)
         Items.REGISTRY.register(MOD_BUS)
+        Items.CREATIVE_TABS.register(MOD_BUS)
 
         runForDist(
             clientTarget = {
@@ -48,6 +49,7 @@ object SignsMod {
     /**
      * Clientside init event
      */
+    @Suppress("unused")
     private fun onClientSetup(event: FMLClientSetupEvent) {
         LOGGER.log(Level.INFO, "Initializing client...")
     }
@@ -55,10 +57,12 @@ object SignsMod {
     /**
      * Serverside init event
      */
+    @Suppress("unused")
     private fun onServerSetup(event: FMLDedicatedServerSetupEvent) {
         LOGGER.log(Level.INFO, "Server starting...")
     }
 
+    @Suppress("unused")
     @SubscribeEvent
     fun onCommonSetup(event: FMLCommonSetupEvent) {
         LOGGER.log(Level.INFO, "Hello! This is working!")
