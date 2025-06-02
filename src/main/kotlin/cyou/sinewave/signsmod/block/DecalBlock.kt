@@ -22,6 +22,7 @@ import net.minecraft.world.phys.BlockHitResult
 
 /**
  * Decal block, essentially a print placed on a surface
+ * Generally implemented in practice as a very flat block
  */
 open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock (
     properties
@@ -106,6 +107,13 @@ open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock
             .isFaceSturdy(level, pos.relative(offset), offset.opposite)
     }
 
+    /**
+     * Cycle the shown decal character forwards
+     * TODO: Potentially add a direction boolean
+     * @param   state   This block's state
+     * @param   pos     This block's position
+     * @param   level   The level this block is in
+     */
     fun cycleCharacter(state: BlockState, pos: BlockPos, level: Level) {
         // Set character to next one on use, or first one if currently on last
         level.setBlockAndUpdate(pos, state.setValue(
@@ -125,11 +133,7 @@ open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock
         pos: BlockPos?,
         tintIndex: Int
     ): Int {
-        return if (tintIndex == 1) {
-            this.color
-        }
-        else {
-            0xFFFFFF
-        }
+        return if (tintIndex == 1) { this.color }
+        else { 0xffffff }
     }
 }

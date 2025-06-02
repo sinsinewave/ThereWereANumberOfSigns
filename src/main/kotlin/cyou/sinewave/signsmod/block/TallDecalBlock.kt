@@ -30,6 +30,12 @@ class TallDecalBlock(properties: Properties, color: Int) : DecalBlock(properties
         registerDefaultState(super.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER))
     }
 
+    /**
+     * Retrieve the position of this block's upper half if lower, or vice versa
+     * @param   state   This block's state
+     * @param   pos     This block's position
+     * @return          The position of this block's pair
+     */
     fun getHalfPos(state: BlockState, pos: BlockPos): BlockPos {
         return if (
             (state.getValue(SURFACE) == Surface.CEILING && state.getValue(HALF) == DoubleBlockHalf.LOWER)

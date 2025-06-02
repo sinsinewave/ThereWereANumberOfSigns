@@ -11,6 +11,7 @@ object Blocks {
     val TALL_DECALS = arrayListOf<DeferredBlock<DecalBlock>>()
 
     init {
+        // Generate a tall decal block for each dye colour
         for (color in DyeColor.entries) {
             TALL_DECALS.add(REGISTRY.register("${color.serializedName}_tall_decal") { ->
                 TallDecalBlock(BlockBehaviour.Properties.of().strength(0.1f), color.textureDiffuseColor)

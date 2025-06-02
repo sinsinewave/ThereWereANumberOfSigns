@@ -11,11 +11,7 @@ class DecalBlockItem(
     val color : Int
 ) : BlockItem(block, properties), ItemColor {
     override fun getColor(stack: ItemStack, tintIndex: Int): Int {
-        return if (tintIndex == 1) {
-            color
-        }
-        else {
-            0xffffff
-        }
+        return if (tintIndex == 1) { color }
+        else { 0xffffff }
     }
 }
