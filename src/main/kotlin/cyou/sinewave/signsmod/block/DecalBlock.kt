@@ -1,14 +1,13 @@
 package cyou.sinewave.signsmod.block
 
+import cyou.sinewave.signsmod.ITinted
 import cyou.sinewave.signsmod.block.property.DecalCharacter
 import cyou.sinewave.signsmod.block.property.Surface
-import net.minecraft.client.color.block.BlockColor
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.context.BlockPlaceContext
-import net.minecraft.world.level.BlockAndTintGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.Block
@@ -30,7 +29,7 @@ open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock
         .instabreak()
         .noOcclusion()
         .mapColor(MapColor.NONE)
-), BlockColor {
+), ITinted {
     companion object {
         val DECAL_CHARACTER   : Property<DecalCharacter> = DecalCharacter.property
         val SURFACE           : Property<Surface>        = Surface.property
@@ -127,13 +126,8 @@ open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock
         ))
     }
 
-    override fun getColor(
-        state: BlockState,
-        level: BlockAndTintGetter?,
-        pos: BlockPos?,
-        tintIndex: Int
-    ): Int {
-        return if (tintIndex == 1) { this.color }
+    override fun getColorRGB(idx: Int): Int {
+        return if (idx == 1) { this.color }
         else { 0xffffff }
     }
 }

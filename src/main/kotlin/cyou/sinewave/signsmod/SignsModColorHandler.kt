@@ -2,8 +2,6 @@ package cyou.sinewave.signsmod
 
 import cyou.sinewave.signsmod.block.SignsModBlocks
 import cyou.sinewave.signsmod.item.SignsModItems
-import net.minecraft.client.color.block.BlockColor
-import net.minecraft.client.color.item.ItemColor
 import net.neoforged.api.distmarker.Dist
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
@@ -15,8 +13,11 @@ object SignsModColorHandler {
     @SubscribeEvent
     fun handleItemTints(event: RegisterColorHandlersEvent.Item) {
         for (item in SignsModItems.REGISTRY.entries) {
-            if (item.value() is ItemColor) {
-                event.register(item.value() as ItemColor, item.value())
+            if (item.value() is ITinted) {
+                event.register(
+                    { stack, tintIndex -> (item.value() as ITinted).getColorRGB(tintIndex) },
+                    item.value()
+                )
             }
         }
     }
@@ -24,8 +25,11 @@ object SignsModColorHandler {
     @SubscribeEvent
     fun handleBlockTints(event: RegisterColorHandlersEvent.Block) {
         for (block in SignsModBlocks.REGISTRY.entries) {
-            if (block.value() is BlockColor) {
-                event.register(block.value() as BlockColor, block.value())
+            if (block.value() is ITinted) {
+                event.register(
+                    { state, level, pos, tintIndex -> (block.value() as ITinted).getColorRGB(tintIndex) },
+                    block.value()
+                )
             }
         }
     }
