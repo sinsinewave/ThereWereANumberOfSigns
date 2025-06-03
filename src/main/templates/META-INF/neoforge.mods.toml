@@ -3,16 +3,14 @@ modLoader = "kotlinforforge"
 loaderVersion = "${loader_version_range}"
 
 license = "${mod_license}"
-# TODO: Issue tracker URL once this thing is on GitHub
-#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
 
-[[mods]] #mandatory
+issueTrackerURL = "https://github.com/sinsinewave/ThereWereANumberOfSigns/issues"
+
+[[mods]]
 modId       = "${mod_id}"
 version     = "${mod_version}"
 displayName = "${mod_name}"
-# A URL for the "homepage" for this mod, displayed in the mod UI
-# TODO: Gitted Hub still
-#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+displayURL  = "https://github.com/sinsinewave/ThereWereANumberOfSigns"
 # TODO: Logo/icon
 #logoFile="signsmod.png"
 #credits=""
@@ -32,5 +30,13 @@ side         = "BOTH"
 modId        = "minecraft"
 type         = "required"
 versionRange = "${minecraft_version_range}"
+ordering     = "NONE"
+side         = "BOTH"
+
+# Kotlin dependency
+[[dependencies."${mod_id}"]]
+modId        = "kotlinforforge"
+type         = "required"
+versionRange = "[5.4,)"
 ordering     = "NONE"
 side         = "BOTH"
