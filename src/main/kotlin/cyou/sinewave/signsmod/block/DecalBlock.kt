@@ -9,13 +9,17 @@ import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.Level
+import net.minecraft.world.level.LevelAccessor
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.SimpleWaterloggedBlock
 import net.minecraft.world.level.block.TransparentBlock
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.Property
+import net.minecraft.world.level.material.FluidState
+import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.level.material.MapColor
 import net.minecraft.world.phys.BlockHitResult
 
@@ -29,11 +33,12 @@ open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock
         .instabreak()
         .noOcclusion()
         .mapColor(MapColor.NONE)
-), ITinted {
+), ITinted, SimpleWaterloggedBlock {
     companion object {
         val DECAL_CHARACTER   : Property<DecalCharacter> = DecalCharacter.property
         val SURFACE           : Property<Surface>        = Surface.property
         val HORIZONTAL_FACING : Property<Direction>      = BlockStateProperties.HORIZONTAL_FACING
+        val WATERLOGGED       : Property<Boolean>        = BlockStateProperties.WATERLOGGED
     }
 
     init {
@@ -43,14 +48,16 @@ open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock
                 .setValue(HORIZONTAL_FACING, Direction.NORTH)
                 .setValue(SURFACE, Surface.WALL)
                 .setValue(DECAL_CHARACTER, DecalCharacter.ZERO)
+                .setValue(WATERLOGGED, false)
         )
     }
 
     override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block?, BlockState?>) {
-        builder.add(HORIZONTAL_FACING, SURFACE, DECAL_CHARACTER)
+        builder.add(HORIZONTAL_FACING, SURFACE, DECAL_CHARACTER, WATERLOGGED)
     }
 
     override fun getStateForPlacement(context: BlockPlaceContext): BlockState? {
+        val fluidstate = context.level.getFluidState(context.clickedPos)
         // Direction is based on block face if placed on wall, else player facing
         return stateDefinition.any()
             .setValue(HORIZONTAL_FACING, when(context.clickedFace.axis) {
@@ -62,6 +69,7 @@ open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock
                 Direction.UP   -> Surface.FLOOR
                 else           -> Surface.WALL
             })
+            .setValue(WATERLOGGED, fluidstate.type == Fluids.WATER)
     }
 
     override fun useWithoutItem(
@@ -124,6 +132,26 @@ open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock
                 DecalCharacter.entries.first()
             }
         ))
+    }
+
+    override fun updateShape(
+        state: BlockState,
+        direction: Direction,
+        neighborState: BlockState,
+        level: LevelAccessor,
+        pos: BlockPos,
+        neighborPos: BlockPos
+    ): BlockState {
+        // Update water
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level))
+        }
+
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos)
+    }
+
+    override fun getFluidState(state: BlockState): FluidState {
+        return if (state.getValue(WATERLOGGED)) { Fluids.WATER.getSource(false) } else { super.getFluidState(state) }
     }
 
     override fun getColorRGB(idx: Int): Int {

@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf
 import net.minecraft.world.level.block.state.properties.Property
+import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.phys.BlockHitResult
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
@@ -94,7 +95,12 @@ class TallDecalBlock(properties: Properties, color: Int) : DecalBlock(properties
     }
 
     override fun setPlacedBy(level: Level, pos: BlockPos, state: BlockState, placer: LivingEntity?, stack: ItemStack) {
-        level.setBlockAndUpdate(getHalfPos(state, pos), state.setValue(HALF, DoubleBlockHalf.UPPER))
+        level.setBlockAndUpdate(
+            getHalfPos(state, pos),
+            state
+                .setValue(HALF, DoubleBlockHalf.UPPER)
+                .setValue(WATERLOGGED, (level.getFluidState(getHalfPos(state, pos)).type == Fluids.WATER))
+        )
     }
 
     override fun useWithoutItem(
