@@ -40,5 +40,31 @@ class SignsModRecipeProvider(output: PackOutput, registries: CompletableFuture<H
             .define('P', Items.PAPER)
             .unlockedBy("has_paper", has(Items.PAPER))
             .save(output,  "signsmod:white_tall_decal_dyeless")
+
+        // Shaped recipes for small decals
+        for ((idx, item) in SignsModItems.SMALL_DECALS.withIndex()) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, item.toStack(4))
+                .pattern(" P ")
+                .pattern("PDP")
+                .pattern(" P ")
+                .define('P', Items.PAPER)
+                .define('D', DyeItem.byColor(DyeColor.entries[idx]))
+                .unlockedBy("has_paper", has(Items.PAPER))
+                .save(output)
+            // Re-dyeing
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, item.get())
+                .requires(SignsModTags.ItemTags.SMALL_DECALS)
+                .requires(DyeItem.byColor(DyeColor.entries[idx]))
+                .unlockedBy("has_paper", has(Items.PAPER))
+                .save(output, "signsmod:${item.id.path}_shapeless")
+        }
+        // Special no-dye recipe for the white decal
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, SignsModItems.SMALL_DECALS[0].toStack(4))
+        .pattern(" P ")
+        .pattern("P P")
+        .pattern(" P ")
+        .define('P', Items.PAPER)
+        .unlockedBy("has_paper", has(Items.PAPER))
+        .save(output,  "signsmod:white_small_decal_dyeless")
     }
 }

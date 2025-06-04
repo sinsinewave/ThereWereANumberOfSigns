@@ -1,0 +1,6 @@
+{
+  "parent": "signsmod:block/small_decal",
+  "textures": {
+    "0": "signsmod:block/small_decal_3"
+  }
+}

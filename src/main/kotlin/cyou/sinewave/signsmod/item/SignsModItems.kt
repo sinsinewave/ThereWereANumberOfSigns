@@ -20,12 +20,23 @@ object SignsModItems {
         SignsMod.ID
     )
     val TALL_DECALS = arrayListOf<DeferredItem<BlockItem>>()
+    val SMALL_DECALS = arrayListOf<DeferredItem<BlockItem>>()
 
     init {
         // Iterate through tall decal blocks and pick dye colour by index
         // Blocks are inserted into their corresponding array by DyeColor entry order
         for ((idx, block) in SignsModBlocks.TALL_DECALS.withIndex()) {
             TALL_DECALS.add(REGISTRY.register(block.id.path) { ->
+                DecalBlockItem(
+                    block.value(),
+                    Item.Properties(),
+                    DyeColor.entries[idx].textureDiffuseColor
+                )
+            })
+        }
+        // Same for small decals
+        for ((idx, block) in SignsModBlocks.SMALL_DECALS.withIndex()) {
+            SMALL_DECALS.add(REGISTRY.register(block.id.path) { ->
                 DecalBlockItem(
                     block.value(),
                     Item.Properties(),
@@ -41,6 +52,9 @@ object SignsModItems {
                 .icon { ItemStack(TALL_DECALS.last().asItem()) }
                 .displayItems { params, output ->
                     for (item in TALL_DECALS) {
+                        output.accept(item.get())
+                    }
+                    for (item in SMALL_DECALS) {
                         output.accept(item.get())
                     }
                 }

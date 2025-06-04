@@ -3,11 +3,13 @@ package cyou.sinewave.signsmod.block
 import cyou.sinewave.signsmod.ITinted
 import cyou.sinewave.signsmod.block.property.DecalCharacter
 import cyou.sinewave.signsmod.block.property.Surface
+import cyou.sinewave.signsmod.util.VoxelShapeUtils
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.context.BlockPlaceContext
+import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.LevelAccessor
 import net.minecraft.world.level.LevelReader
@@ -22,6 +24,8 @@ import net.minecraft.world.level.material.FluidState
 import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.level.material.MapColor
 import net.minecraft.world.phys.BlockHitResult
+import net.minecraft.world.phys.shapes.CollisionContext
+import net.minecraft.world.phys.shapes.VoxelShape
 
 /**
  * Decal block, essentially a print placed on a surface
@@ -70,6 +74,26 @@ open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock
                 else           -> Surface.WALL
             })
             .setValue(WATERLOGGED, fluidstate.type == Fluids.WATER)
+    }
+
+    override fun getShape(state: BlockState, level: BlockGetter, pos: BlockPos, context: CollisionContext): VoxelShape {
+        return when (state.getValue(SURFACE)) {
+            Surface.FLOOR -> VoxelShapeUtils.horizontalRotatedBox(
+                3.0, 0.0, 1.0,
+                13.0, 1.0, 15.0,
+                state.getValue(HORIZONTAL_FACING).opposite
+            )
+            Surface.WALL -> VoxelShapeUtils.horizontalRotatedBox(
+                3.0, 1.0, 0.0,
+                13.0, 15.0, 1.0,
+                state.getValue(HORIZONTAL_FACING)
+            )
+            Surface.CEILING -> VoxelShapeUtils.horizontalRotatedBox(
+                3.0, 15.0, 1.0,
+                13.0, 16.0, 15.0,
+                state.getValue(HORIZONTAL_FACING)
+            )
+        }
     }
 
     override fun useWithoutItem(

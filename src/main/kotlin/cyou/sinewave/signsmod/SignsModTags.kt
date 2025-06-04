@@ -11,6 +11,7 @@ object SignsModTags {
     }
 
     object ItemTags {
-        val TALL_DECALS: TagKey<Item> = TagKey<Item>.create(Registries.ITEM, modRL("tall_decals"))
+        val TALL_DECALS: TagKey<Item>  = TagKey<Item>.create(Registries.ITEM, modRL("tall_decals"))
+        val SMALL_DECALS: TagKey<Item> = TagKey<Item>.create(Registries.ITEM, modRL("small_decals"))
     }
 }

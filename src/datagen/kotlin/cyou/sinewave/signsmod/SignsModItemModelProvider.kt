@@ -10,8 +10,13 @@ class SignsModItemModelProvider(output: PackOutput, existingFileHelper: Existing
     override fun registerModels() {
         for (item in SignsModItems.TALL_DECALS) {
             withExistingParent(item.id.toString(), mcLoc("item/generated"))
-                .texture("layer0", "signsmod:item/decal_background")
+                .texture("layer0", "signsmod:item/tall_decal_background")
                 .texture("layer1", "signsmod:item/tall_decal_overlay")
+        }
+        for (item in SignsModItems.SMALL_DECALS) {
+            withExistingParent(item.id.toString(), mcLoc("item/generated"))
+                .texture("layer0", "signsmod:item/small_decal_background")
+                .texture("layer1", "signsmod:item/small_decal_overlay")
         }
     }
 }

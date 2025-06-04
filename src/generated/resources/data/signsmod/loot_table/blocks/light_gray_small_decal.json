@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "signsmod:light_gray_small_decal"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "signsmod:blocks/light_gray_small_decal"
+}

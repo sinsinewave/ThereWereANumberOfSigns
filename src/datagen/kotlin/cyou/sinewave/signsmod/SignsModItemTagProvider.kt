@@ -15,5 +15,7 @@ class SignsModItemTagProvider(
     override fun addTags(provider: HolderLookup.Provider) {
         tag(SignsModTags.ItemTags.TALL_DECALS)
             .add(*SignsModItems.TALL_DECALS.map { it.value() }.toTypedArray())
+        tag(SignsModTags.ItemTags.SMALL_DECALS)
+            .add(*SignsModItems.SMALL_DECALS.map { it.value() }.toTypedArray())
     }
 }

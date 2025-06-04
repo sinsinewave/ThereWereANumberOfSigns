@@ -1,0 +1,1374 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_0",
+        "x": 90
+      },
+      "when": {
+        "decal_character": "0",
+        "facing": "north",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_0"
+      },
+      "when": {
+        "decal_character": "0",
+        "facing": "north",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_0",
+        "x": 270
+      },
+      "when": {
+        "decal_character": "0",
+        "facing": "north",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_0",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "0",
+        "facing": "south",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_0",
+        "y": 180
+      },
+      "when": {
+        "decal_character": "0",
+        "facing": "south",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_0",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "0",
+        "facing": "south",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_0",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "0",
+        "facing": "west",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_0",
+        "y": 270
+      },
+      "when": {
+        "decal_character": "0",
+        "facing": "west",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_0",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "0",
+        "facing": "west",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_0",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "0",
+        "facing": "east",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_0",
+        "y": 90
+      },
+      "when": {
+        "decal_character": "0",
+        "facing": "east",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_0",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "0",
+        "facing": "east",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_1",
+        "x": 90
+      },
+      "when": {
+        "decal_character": "1",
+        "facing": "north",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_1"
+      },
+      "when": {
+        "decal_character": "1",
+        "facing": "north",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_1",
+        "x": 270
+      },
+      "when": {
+        "decal_character": "1",
+        "facing": "north",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_1",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "1",
+        "facing": "south",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_1",
+        "y": 180
+      },
+      "when": {
+        "decal_character": "1",
+        "facing": "south",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_1",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "1",
+        "facing": "south",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_1",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "1",
+        "facing": "west",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_1",
+        "y": 270
+      },
+      "when": {
+        "decal_character": "1",
+        "facing": "west",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_1",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "1",
+        "facing": "west",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_1",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "1",
+        "facing": "east",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_1",
+        "y": 90
+      },
+      "when": {
+        "decal_character": "1",
+        "facing": "east",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_1",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "1",
+        "facing": "east",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_2",
+        "x": 90
+      },
+      "when": {
+        "decal_character": "2",
+        "facing": "north",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_2"
+      },
+      "when": {
+        "decal_character": "2",
+        "facing": "north",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_2",
+        "x": 270
+      },
+      "when": {
+        "decal_character": "2",
+        "facing": "north",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_2",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "2",
+        "facing": "south",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_2",
+        "y": 180
+      },
+      "when": {
+        "decal_character": "2",
+        "facing": "south",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_2",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "2",
+        "facing": "south",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_2",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "2",
+        "facing": "west",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_2",
+        "y": 270
+      },
+      "when": {
+        "decal_character": "2",
+        "facing": "west",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_2",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "2",
+        "facing": "west",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_2",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "2",
+        "facing": "east",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_2",
+        "y": 90
+      },
+      "when": {
+        "decal_character": "2",
+        "facing": "east",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_2",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "2",
+        "facing": "east",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_3",
+        "x": 90
+      },
+      "when": {
+        "decal_character": "3",
+        "facing": "north",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_3"
+      },
+      "when": {
+        "decal_character": "3",
+        "facing": "north",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_3",
+        "x": 270
+      },
+      "when": {
+        "decal_character": "3",
+        "facing": "north",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_3",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "3",
+        "facing": "south",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_3",
+        "y": 180
+      },
+      "when": {
+        "decal_character": "3",
+        "facing": "south",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_3",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "3",
+        "facing": "south",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_3",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "3",
+        "facing": "west",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_3",
+        "y": 270
+      },
+      "when": {
+        "decal_character": "3",
+        "facing": "west",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_3",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "3",
+        "facing": "west",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_3",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "3",
+        "facing": "east",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_3",
+        "y": 90
+      },
+      "when": {
+        "decal_character": "3",
+        "facing": "east",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_3",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "3",
+        "facing": "east",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_4",
+        "x": 90
+      },
+      "when": {
+        "decal_character": "4",
+        "facing": "north",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_4"
+      },
+      "when": {
+        "decal_character": "4",
+        "facing": "north",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_4",
+        "x": 270
+      },
+      "when": {
+        "decal_character": "4",
+        "facing": "north",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_4",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "4",
+        "facing": "south",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_4",
+        "y": 180
+      },
+      "when": {
+        "decal_character": "4",
+        "facing": "south",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_4",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "4",
+        "facing": "south",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_4",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "4",
+        "facing": "west",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_4",
+        "y": 270
+      },
+      "when": {
+        "decal_character": "4",
+        "facing": "west",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_4",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "4",
+        "facing": "west",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_4",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "4",
+        "facing": "east",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_4",
+        "y": 90
+      },
+      "when": {
+        "decal_character": "4",
+        "facing": "east",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_4",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "4",
+        "facing": "east",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_5",
+        "x": 90
+      },
+      "when": {
+        "decal_character": "5",
+        "facing": "north",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_5"
+      },
+      "when": {
+        "decal_character": "5",
+        "facing": "north",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_5",
+        "x": 270
+      },
+      "when": {
+        "decal_character": "5",
+        "facing": "north",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_5",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "5",
+        "facing": "south",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_5",
+        "y": 180
+      },
+      "when": {
+        "decal_character": "5",
+        "facing": "south",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_5",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "5",
+        "facing": "south",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_5",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "5",
+        "facing": "west",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_5",
+        "y": 270
+      },
+      "when": {
+        "decal_character": "5",
+        "facing": "west",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_5",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "5",
+        "facing": "west",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_5",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "5",
+        "facing": "east",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_5",
+        "y": 90
+      },
+      "when": {
+        "decal_character": "5",
+        "facing": "east",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_5",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "5",
+        "facing": "east",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_6",
+        "x": 90
+      },
+      "when": {
+        "decal_character": "6",
+        "facing": "north",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_6"
+      },
+      "when": {
+        "decal_character": "6",
+        "facing": "north",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_6",
+        "x": 270
+      },
+      "when": {
+        "decal_character": "6",
+        "facing": "north",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_6",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "6",
+        "facing": "south",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_6",
+        "y": 180
+      },
+      "when": {
+        "decal_character": "6",
+        "facing": "south",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_6",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "6",
+        "facing": "south",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_6",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "6",
+        "facing": "west",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_6",
+        "y": 270
+      },
+      "when": {
+        "decal_character": "6",
+        "facing": "west",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_6",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "6",
+        "facing": "west",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_6",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "6",
+        "facing": "east",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_6",
+        "y": 90
+      },
+      "when": {
+        "decal_character": "6",
+        "facing": "east",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_6",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "6",
+        "facing": "east",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_7",
+        "x": 90
+      },
+      "when": {
+        "decal_character": "7",
+        "facing": "north",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_7"
+      },
+      "when": {
+        "decal_character": "7",
+        "facing": "north",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_7",
+        "x": 270
+      },
+      "when": {
+        "decal_character": "7",
+        "facing": "north",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_7",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "7",
+        "facing": "south",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_7",
+        "y": 180
+      },
+      "when": {
+        "decal_character": "7",
+        "facing": "south",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_7",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "7",
+        "facing": "south",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_7",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "7",
+        "facing": "west",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_7",
+        "y": 270
+      },
+      "when": {
+        "decal_character": "7",
+        "facing": "west",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_7",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "7",
+        "facing": "west",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_7",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "7",
+        "facing": "east",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_7",
+        "y": 90
+      },
+      "when": {
+        "decal_character": "7",
+        "facing": "east",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_7",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "7",
+        "facing": "east",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_8",
+        "x": 90
+      },
+      "when": {
+        "decal_character": "8",
+        "facing": "north",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_8"
+      },
+      "when": {
+        "decal_character": "8",
+        "facing": "north",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_8",
+        "x": 270
+      },
+      "when": {
+        "decal_character": "8",
+        "facing": "north",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_8",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "8",
+        "facing": "south",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_8",
+        "y": 180
+      },
+      "when": {
+        "decal_character": "8",
+        "facing": "south",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_8",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "8",
+        "facing": "south",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_8",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "8",
+        "facing": "west",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_8",
+        "y": 270
+      },
+      "when": {
+        "decal_character": "8",
+        "facing": "west",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_8",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "8",
+        "facing": "west",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_8",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "8",
+        "facing": "east",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_8",
+        "y": 90
+      },
+      "when": {
+        "decal_character": "8",
+        "facing": "east",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_8",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "8",
+        "facing": "east",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_9",
+        "x": 90
+      },
+      "when": {
+        "decal_character": "9",
+        "facing": "north",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_9"
+      },
+      "when": {
+        "decal_character": "9",
+        "facing": "north",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_9",
+        "x": 270
+      },
+      "when": {
+        "decal_character": "9",
+        "facing": "north",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_9",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "9",
+        "facing": "south",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_9",
+        "y": 180
+      },
+      "when": {
+        "decal_character": "9",
+        "facing": "south",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_9",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "decal_character": "9",
+        "facing": "south",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_9",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "9",
+        "facing": "west",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_9",
+        "y": 270
+      },
+      "when": {
+        "decal_character": "9",
+        "facing": "west",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_9",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "decal_character": "9",
+        "facing": "west",
+        "surface": "ceiling"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_9",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "9",
+        "facing": "east",
+        "surface": "floor"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_9",
+        "y": 90
+      },
+      "when": {
+        "decal_character": "9",
+        "facing": "east",
+        "surface": "wall"
+      }
+    },
+    {
+      "apply": {
+        "model": "signsmod:block/small_decal_9",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "decal_character": "9",
+        "facing": "east",
+        "surface": "ceiling"
+      }
+    }
+  ]
+}

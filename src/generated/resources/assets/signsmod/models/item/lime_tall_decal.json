@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "signsmod:item/decal_background",
+    "layer0": "signsmod:item/tall_decal_background",
     "layer1": "signsmod:item/tall_decal_overlay"
   }
 }

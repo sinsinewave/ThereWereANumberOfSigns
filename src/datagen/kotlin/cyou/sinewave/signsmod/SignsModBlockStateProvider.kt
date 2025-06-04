@@ -1,6 +1,7 @@
 package cyou.sinewave.signsmod
 
 import cyou.sinewave.signsmod.block.SignsModBlocks
+import cyou.sinewave.signsmod.block.TallDecalBlock
 import cyou.sinewave.signsmod.block.property.DecalCharacter
 import cyou.sinewave.signsmod.block.property.Surface
 import net.minecraft.core.Direction
@@ -16,21 +17,30 @@ class SignsModBlockStateProvider(
 ) : BlockStateProvider(output, SignsMod.ID, fileHelper) {
 
     override fun registerStatesAndModels() {
-        for (block in SignsModBlocks.TALL_DECALS) {
+        for (block in SignsModBlocks.REGISTRY.entries) {
+            val prefix = if (block.id.path.contains("tall_decal")) { "tall_decal" }
+            else if (block.id.path.contains("small_decal")) { "small_decal" }
+            else { /* Not a decal we care about, skip */ continue }
+
             val stateBuilder = getMultipartBuilder(block.get())
             for (character in DecalCharacter.entries) {
                 for (half in DoubleBlockHalf.entries) {
+                    val isDouble = block.value() is TallDecalBlock
+                    // This is dumb but this is also in datagen, so I don't care
+                    // If we're doing a single block decal, just break on the second half
+                    if (!isDouble && half == DoubleBlockHalf.entries.last()) { break }
+
                     val charModel = models().withExistingParent(
-                        "tall_decal_${character.serialName}_$half",
-                        this.mcLoc("signsmod:block/tall_decal_${half.serializedName}")
-                    ).texture("0", "signsmod:block/tall_decal_${character.serialName}")
+                        "${prefix}_${character.serialName}" + if (isDouble) {"_${half.serializedName}"} else { "" },
+                        this.mcLoc("signsmod:block/${prefix}" + if (isDouble) {"_${half.serializedName}"} else { "" })
+                    ).texture("0", "signsmod:block/${prefix}_${character.serialName}")
 
                     for (facing in Direction.entries) {
                         if (facing == Direction.DOWN || facing == Direction.UP) {
                             continue
                         }
                         for (surface in Surface.entries) {
-                            stateBuilder.part()
+                            val state = stateBuilder.part()
                                 .modelFile(charModel)
                                 .rotationY(
                                     when (facing) {
@@ -52,8 +62,11 @@ class SignsModBlockStateProvider(
                                 .condition(BlockStateProperties.HORIZONTAL_FACING, facing)
                                 .condition(Surface.property, surface)
                                 .condition(DecalCharacter.property, character)
-                                .condition(BlockStateProperties.DOUBLE_BLOCK_HALF, half)
-                                .end()
+                            // Add half if block is tall
+                            if (isDouble) {
+                                state.condition(BlockStateProperties.DOUBLE_BLOCK_HALF, half)
+                            }
+                            state.end()
                         }
                     }
                 }

@@ -16,5 +16,22 @@
   "block.signsmod.purple_tall_decal"    : "Purple Tall Decal",
   "block.signsmod.red_tall_decal"       : "Red Tall Decal",
   "block.signsmod.white_tall_decal"     : "White Tall Decal",
-  "block.signsmod.yellow_tall_decal"    : "Yellow Tall Decal"
+  "block.signsmod.yellow_tall_decal"    : "Yellow Tall Decal",
+
+  "block.signsmod.black_small_decal"     : "Black Small Decal",
+  "block.signsmod.blue_small_decal"      : "Blue Small Decal",
+  "block.signsmod.brown_small_decal"     : "Brown Small Decal",
+  "block.signsmod.cyan_small_decal"      : "Cyan Small Decal",
+  "block.signsmod.gray_small_decal"      : "Gray Small Decal",
+  "block.signsmod.green_small_decal"     : "Green Small Decal",
+  "block.signsmod.light_blue_small_decal": "Light Blue Small Decal",
+  "block.signsmod.light_gray_small_decal": "Light Gray Small Decal",
+  "block.signsmod.lime_small_decal"      : "Lime Small Decal",
+  "block.signsmod.magenta_small_decal"   : "Magenta Small Decal",
+  "block.signsmod.orange_small_decal"    : "Orange Small Decal",
+  "block.signsmod.pink_small_decal"      : "Pink Small Decal",
+  "block.signsmod.purple_small_decal"    : "Purple Small Decal",
+  "block.signsmod.red_small_decal"       : "Red Small Decal",
+  "block.signsmod.white_small_decal"     : "White Small Decal",
+  "block.signsmod.yellow_small_decal"    : "Yellow Small Decal"
 }
