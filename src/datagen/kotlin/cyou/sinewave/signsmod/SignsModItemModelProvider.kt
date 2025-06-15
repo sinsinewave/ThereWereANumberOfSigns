@@ -18,5 +18,8 @@ class SignsModItemModelProvider(output: PackOutput, existingFileHelper: Existing
                 .texture("layer0", "signsmod:item/small_decal_background")
                 .texture("layer1", "signsmod:item/small_decal_overlay")
         }
+        for (item in SignsModItems.POSTERS) {
+            withExistingParent(item.id.toString(), modLoc("item/poster"))
+        }
     }
 }

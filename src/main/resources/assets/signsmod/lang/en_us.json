@@ -33,5 +33,22 @@
   "block.signsmod.purple_small_decal"    : "Purple Small Decal",
   "block.signsmod.red_small_decal"       : "Red Small Decal",
   "block.signsmod.white_small_decal"     : "White Small Decal",
-  "block.signsmod.yellow_small_decal"    : "Yellow Small Decal"
+  "block.signsmod.yellow_small_decal"    : "Yellow Small Decal",
+
+  "block.signsmod.black_poster"     : "Black Poster",
+  "block.signsmod.blue_poster"      : "Blue Poster",
+  "block.signsmod.brown_poster"     : "Brown Poster",
+  "block.signsmod.cyan_poster"      : "Cyan Poster",
+  "block.signsmod.gray_poster"      : "Gray Poster",
+  "block.signsmod.green_poster"     : "Green Poster",
+  "block.signsmod.light_blue_poster": "Light Blue Poster",
+  "block.signsmod.light_gray_poster": "Light Gray Poster",
+  "block.signsmod.lime_poster"      : "Lime Poster",
+  "block.signsmod.magenta_poster"   : "Magenta Poster",
+  "block.signsmod.orange_poster"    : "Orange Poster",
+  "block.signsmod.pink_poster"      : "Pink Poster",
+  "block.signsmod.purple_poster"    : "Purple Poster",
+  "block.signsmod.red_poster"       : "Red Poster",
+  "block.signsmod.white_poster"     : "White Poster",
+  "block.signsmod.yellow_poster"    : "Yellow Poster"
 }

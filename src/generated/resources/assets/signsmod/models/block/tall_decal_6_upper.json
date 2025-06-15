@@ -1,6 +1,7 @@
 {
   "parent": "signsmod:block/tall_decal_upper",
   "textures": {
-    "0": "signsmod:block/tall_decal_6"
+    "0": "signsmod:block/tall_decal_6",
+    "particle": "minecraft:block/black_concrete"
   }
 }

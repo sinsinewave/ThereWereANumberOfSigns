@@ -2,10 +2,15 @@ package cyou.sinewave.signsmod
 
 import cyou.sinewave.signsmod.block.PosterBlockEntityRenderer
 import cyou.sinewave.signsmod.block.SignsModBlocks
+import cyou.sinewave.signsmod.item.PosterItemRenderer
+import cyou.sinewave.signsmod.item.SignsModItems
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer
 import net.neoforged.api.distmarker.Dist
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent
 
 /**
  * Client bus subscriber.
@@ -19,6 +24,20 @@ object SignsModClient {
         event.registerBlockEntityRenderer( // The block entity type to register the renderer for.
             SignsModBlocks.BlockEntities.POSTER.get(),  // A function of BlockEntityRendererProvider.Context to BlockEntityRenderer.
             ::PosterBlockEntityRenderer
+        )
+    }
+
+    @SubscribeEvent
+    fun registerClientExtensions(event: RegisterClientExtensionsEvent) {
+        event.registerItem(
+            object : IClientItemExtensions {
+                val posterBEWLR = PosterItemRenderer()
+
+                override fun getCustomRenderer(): BlockEntityWithoutLevelRenderer {
+                    return posterBEWLR
+                }
+            },
+            *SignsModItems.POSTERS.map { it.value() }.toTypedArray()
         )
     }
 }

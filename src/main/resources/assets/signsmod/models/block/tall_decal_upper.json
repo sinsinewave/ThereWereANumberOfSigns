@@ -2,9 +2,6 @@
 	"ambientocclusion": false,
 	"render_type" : "cutout",
 	"texture_size": [16, 32],
-	"textures": {
-		"particle": "#0"
-	},
 	"elements": [
 		{
 			"from": [2, 0, 0.05],

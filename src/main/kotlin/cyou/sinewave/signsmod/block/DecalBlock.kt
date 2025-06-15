@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
+import net.minecraft.world.item.DyeColor
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
@@ -31,7 +32,7 @@ import net.minecraft.world.phys.shapes.VoxelShape
  * Decal block, essentially a print placed on a surface
  * Generally implemented in practice as a very flat block
  */
-open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock (
+open class DecalBlock(properties: Properties, val color: DyeColor) : TransparentBlock (
     properties
         .noCollission()
         .instabreak()
@@ -179,7 +180,7 @@ open class DecalBlock(properties: Properties, val color: Int) : TransparentBlock
     }
 
     override fun getColorRGB(idx: Int): Int {
-        return if (idx == 1) { this.color }
+        return if (idx == 1) { this.color.textureDiffuseColor }
         else { 0xffffff }
     }
 }

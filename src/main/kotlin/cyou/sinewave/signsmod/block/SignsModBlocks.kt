@@ -23,10 +23,10 @@ object SignsModBlocks {
         // Generate decal blocks for each dye colour
         for (color in DyeColor.entries) {
             TALL_DECALS.add(REGISTRY.register("${color.serializedName}_tall_decal") { ->
-                TallDecalBlock(BlockBehaviour.Properties.of().strength(0.1f), color.textureDiffuseColor)
+                TallDecalBlock(BlockBehaviour.Properties.of().strength(0.1f), color)
             })
             SMALL_DECALS.add(REGISTRY.register("${color.serializedName}_small_decal") { ->
-                DecalBlock(BlockBehaviour.Properties.of().strength(0.1f), color.textureDiffuseColor)
+                DecalBlock(BlockBehaviour.Properties.of().strength(0.1f), color)
             })
             POSTERS.add(REGISTRY.register("${color.serializedName}_poster") { ->
                 PosterBlock(color, BlockBehaviour.Properties.of().strength(0.1f))

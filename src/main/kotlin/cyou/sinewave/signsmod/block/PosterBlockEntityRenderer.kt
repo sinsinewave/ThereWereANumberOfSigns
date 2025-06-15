@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.blockentity.BannerRenderer
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider
 import net.minecraft.client.resources.model.ModelBakery
 import net.minecraft.world.level.block.entity.BannerBlockEntity
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf
 import net.minecraft.world.phys.AABB
 import net.neoforged.api.distmarker.Dist
 import net.neoforged.api.distmarker.OnlyIn
@@ -28,6 +29,9 @@ class PosterBlockEntityRenderer(context: BlockEntityRendererProvider.Context): B
         packedLight: Int,
         packedOverlay: Int
     ) {
+        // skip rendering on upper half
+        if (blockEntity.blockState.getValue(PosterBlock.HALF) == DoubleBlockHalf.UPPER) { return }
+
         poseStack.pushPose()
 
         poseStack.translate(0.5, 0.0, 0.5)
@@ -54,7 +58,7 @@ class PosterBlockEntityRenderer(context: BlockEntityRendererProvider.Context): B
         // Flatten the model
         // This wastes 4 quads because we're just squishing the 3D banner model
         // However the performance impact should be minimal enough to just not matter
-        poseStack.scale(0.6666667f,0.6666667f, 0.001f)
+        poseStack.scale(0.6666667f,0.6666667f, 0.005f)
 
         val vertexConsumer = ModelBakery.BANNER_BASE.buffer(bufferSource, RenderType::entitySolid)
         // Render base layer

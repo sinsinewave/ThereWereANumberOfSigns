@@ -1,6 +1,7 @@
 {
   "parent": "signsmod:block/small_decal",
   "textures": {
-    "0": "signsmod:block/small_decal_9"
+    "0": "signsmod:block/small_decal_9",
+    "particle": "minecraft:block/black_concrete"
   }
 }

@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.player.Player
+import net.minecraft.world.item.DyeColor
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
@@ -22,7 +23,7 @@ import net.minecraft.world.phys.BlockHitResult
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
 
-class TallDecalBlock(properties: Properties, color: Int) : DecalBlock(properties, color) {
+class TallDecalBlock(properties: Properties, color: DyeColor) : DecalBlock(properties, color) {
     companion object {
         val HALF: Property<DoubleBlockHalf> = BlockStateProperties.DOUBLE_BLOCK_HALF
     }

@@ -12,16 +12,19 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
+import net.minecraft.world.level.LevelAccessor
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.AbstractBannerBlock
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.SimpleWaterloggedBlock
+import net.minecraft.world.level.block.entity.BannerBlockEntity
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf
 import net.minecraft.world.level.block.state.properties.Property
+import net.minecraft.world.level.material.FluidState
 import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.level.material.MapColor
 import net.minecraft.world.phys.shapes.CollisionContext
@@ -38,6 +41,15 @@ class PosterBlock(color: DyeColor, properties: Properties) : AbstractBannerBlock
         .noOcclusion()
         .mapColor(MapColor.NONE)
 ), SimpleWaterloggedBlock {
+    init {
+        registerDefaultState(stateDefinition.any()
+            .setValue(HALF, DoubleBlockHalf.LOWER)
+            .setValue(HORIZONTAL_FACING, Direction.NORTH)
+            .setValue(SURFACE, Surface.WALL)
+            .setValue(WATERLOGGED, false)
+        )
+    }
+
     companion object {
         val SURFACE           : Property<Surface>         = Surface.property
         val HORIZONTAL_FACING : Property<Direction>       = BlockStateProperties.HORIZONTAL_FACING
@@ -55,6 +67,22 @@ class PosterBlock(color: DyeColor, properties: Properties) : AbstractBannerBlock
         fun byColor(color: DyeColor): Block { return SignsModBlocks.POSTERS.first { it.value().color == color }.value() }
     }
     override fun codec(): MapCodec<out PosterBlock> { return CODEC }
+
+    override fun getCloneItemStack(level: LevelReader, pos: BlockPos, state: BlockState): ItemStack {
+        val blockEntity = level.getBlockEntity(if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
+            getHalfPos(state, pos)
+        }
+        else {
+            pos
+        })
+
+        return if (blockEntity is PosterBlockEntity) {
+            blockEntity.item
+        }
+        else {
+            super.getCloneItemStack(level, pos, state)
+        }
+    }
 
     override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block?, BlockState?>) {
         super.createBlockStateDefinition(builder)
@@ -94,6 +122,11 @@ class PosterBlock(color: DyeColor, properties: Properties) : AbstractBannerBlock
             state
                 .setValue(HALF, DoubleBlockHalf.UPPER)
                 .setValue(WATERLOGGED, (level.getFluidState(getHalfPos(state, pos)).type == Fluids.WATER))
+        )
+        // Slightly cursed, but will sync data to the other block
+        // Used for drops mainly
+        (level.getBlockEntity(getHalfPos(state, pos)) as PosterBlockEntity).applyComponentsFromItemStack(
+            (level.getBlockEntity(pos) as PosterBlockEntity).item
         )
     }
 
@@ -155,9 +188,10 @@ class PosterBlock(color: DyeColor, properties: Properties) : AbstractBannerBlock
         neighborPos: BlockPos,
         movedByPiston: Boolean
     ) {
-        if (!level.getBlockState(getHalfPos(state, pos)).`is`(this)) {
+        if (!level.getBlockState(getHalfPos(state, pos)).`is`(this) || !canSurvive(state, level, pos)) {
             level.removeBlock(pos, false)
         }
+
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston)
     }
 
@@ -182,10 +216,27 @@ class PosterBlock(color: DyeColor, properties: Properties) : AbstractBannerBlock
         }
     }
 
-    override fun newBlockEntity(pos: BlockPos, state: BlockState): BlockEntity? {
-        return if (state.getValue(HALF) == DoubleBlockHalf.LOWER) {
-            PosterBlockEntity(pos, state)
+    override fun updateShape(
+        state: BlockState,
+        direction: Direction,
+        neighborState: BlockState,
+        level: LevelAccessor,
+        pos: BlockPos,
+        neighborPos: BlockPos
+    ): BlockState {
+        // Update water
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level))
         }
-        else { null }
+
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos)
+    }
+
+    override fun getFluidState(state: BlockState): FluidState {
+        return if (state.getValue(WATERLOGGED)) { Fluids.WATER.getSource(false) } else { super.getFluidState(state) }
+    }
+
+    override fun newBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {
+        return PosterBlockEntity(pos, state)
     }
 }

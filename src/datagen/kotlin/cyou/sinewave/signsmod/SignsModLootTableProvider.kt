@@ -33,8 +33,14 @@ class SignsModLootTableProvider(
         override fun generate() {
             // Decal blocks drop themselves
             for (block in SignsModBlocks.REGISTRY.entries) {
-                if (block.value() is DecalBlock || block.value() is PosterBlock) {
-                    dropSelf(block.get())
+                if (block.value() is PosterBlock) {
+                    add(
+                        block.value(),
+                        createBannerDrop(block.value())
+                    )
+                }
+                else if (block.value() is DecalBlock) {
+                    dropSelf(block.value())
                 }
             }
         }

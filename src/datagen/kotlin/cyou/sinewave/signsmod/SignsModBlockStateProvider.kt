@@ -9,7 +9,6 @@ import net.minecraft.data.PackOutput
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider
-import net.neoforged.neoforge.client.model.generators.ConfiguredModel
 import net.neoforged.neoforge.common.data.ExistingFileHelper
 
 class SignsModBlockStateProvider(
@@ -36,7 +35,10 @@ class SignsModBlockStateProvider(
                     val charModel = models().withExistingParent(
                         "${prefix}_${character.serialName}" + if (isDouble) {"_${half.serializedName}"} else { "" },
                         this.mcLoc("signsmod:block/${prefix}" + if (isDouble) {"_${half.serializedName}"} else { "" })
-                    ).texture("0", "signsmod:block/${prefix}_${character.serialName}")
+                    )
+                        .texture("particle", mcLoc("block/${block.value().color.serializedName}_concrete"))
+                        .texture("0", "signsmod:block/${prefix}_${character.serialName}")
+
 
                     for (facing in Direction.entries) {
                         if (facing == Direction.DOWN || facing == Direction.UP) {
@@ -79,11 +81,11 @@ class SignsModBlockStateProvider(
         // Posters
         for (block in SignsModBlocks.POSTERS) {
             val stateBuilder = getVariantBuilder(block.value())
-            stateBuilder.forAllStates { state ->
-                ConfiguredModel.builder()
-                    .modelFile(models().getExistingFile(mcLoc("air")))
-                    .build()
-            }
+            stateBuilder.partialState().modelForState().modelFile(
+                models()
+                    .withExistingParent(block.id.path, mcLoc("block/air"))
+                    .texture("particle", mcLoc("block/${block.value().color.serializedName}_concrete"))
+            ).addModel()
         }
     }
 }

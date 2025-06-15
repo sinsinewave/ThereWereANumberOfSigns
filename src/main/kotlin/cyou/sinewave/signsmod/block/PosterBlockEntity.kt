@@ -1,6 +1,7 @@
 package cyou.sinewave.signsmod.block
 
 import net.minecraft.core.BlockPos
+import net.minecraft.world.item.DyeColor
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.block.entity.BannerBlockEntity
 import net.minecraft.world.level.block.entity.BlockEntityType
@@ -15,5 +16,9 @@ class PosterBlockEntity(pos: BlockPos, blockState: BlockState) : BannerBlockEnti
         val stack = ItemStack(PosterBlock.byColor(this.baseColor))
         stack.applyComponents(this.collectComponents())
         return stack
+    }
+
+    override fun fromItem(stack: ItemStack, color: DyeColor) {
+        super.fromItem(stack, color)
     }
 }
