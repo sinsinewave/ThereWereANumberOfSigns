@@ -1,6 +1,7 @@
 package cyou.sinewave.signsmod
 
 import cyou.sinewave.signsmod.block.DecalBlock
+import cyou.sinewave.signsmod.block.PosterBlock
 import cyou.sinewave.signsmod.block.SignsModBlocks
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.PackOutput
@@ -32,7 +33,7 @@ class SignsModLootTableProvider(
         override fun generate() {
             // Decal blocks drop themselves
             for (block in SignsModBlocks.REGISTRY.entries) {
-                if (block.value() is DecalBlock) {
+                if (block.value() is DecalBlock || block.value() is PosterBlock) {
                     dropSelf(block.get())
                 }
             }

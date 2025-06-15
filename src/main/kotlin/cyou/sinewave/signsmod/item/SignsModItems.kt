@@ -19,8 +19,9 @@ object SignsModItems {
         Registries.CREATIVE_MODE_TAB,
         SignsMod.ID
     )
-    val TALL_DECALS = arrayListOf<DeferredItem<BlockItem>>()
+    val TALL_DECALS  = arrayListOf<DeferredItem<BlockItem>>()
     val SMALL_DECALS = arrayListOf<DeferredItem<BlockItem>>()
+    val POSTERS      = arrayListOf<DeferredItem<BlockItem>>()
 
     init {
         // Iterate through tall decal blocks and pick dye colour by index
@@ -41,6 +42,16 @@ object SignsModItems {
                     block.value(),
                     Item.Properties(),
                     DyeColor.entries[idx].textureDiffuseColor
+                )
+            })
+        }
+
+        // And posters
+        for ((idx, block) in SignsModBlocks.POSTERS.withIndex()) {
+            POSTERS.add(REGISTRY.register(block.id.path) { ->
+                PosterBlockItem(
+                    block.value(),
+                    Item.Properties()
                 )
             })
         }

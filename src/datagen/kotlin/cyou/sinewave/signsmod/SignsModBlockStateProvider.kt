@@ -9,6 +9,7 @@ import net.minecraft.data.PackOutput
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel
 import net.neoforged.neoforge.common.data.ExistingFileHelper
 
 class SignsModBlockStateProvider(
@@ -17,7 +18,9 @@ class SignsModBlockStateProvider(
 ) : BlockStateProvider(output, SignsMod.ID, fileHelper) {
 
     override fun registerStatesAndModels() {
-        for (block in SignsModBlocks.REGISTRY.entries) {
+        // Regular decals
+        // Should probably make this less horrible at some point
+        for (block in SignsModBlocks.TALL_DECALS + SignsModBlocks.SMALL_DECALS) {
             val prefix = if (block.id.path.contains("tall_decal")) { "tall_decal" }
             else if (block.id.path.contains("small_decal")) { "small_decal" }
             else { /* Not a decal we care about, skip */ continue }
@@ -70,6 +73,16 @@ class SignsModBlockStateProvider(
                         }
                     }
                 }
+            }
+        }
+
+        // Posters
+        for (block in SignsModBlocks.POSTERS) {
+            val stateBuilder = getVariantBuilder(block.value())
+            stateBuilder.forAllStates { state ->
+                ConfiguredModel.builder()
+                    .modelFile(models().getExistingFile(mcLoc("air")))
+                    .build()
             }
         }
     }

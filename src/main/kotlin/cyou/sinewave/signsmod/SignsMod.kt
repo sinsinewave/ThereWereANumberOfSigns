@@ -32,6 +32,7 @@ object SignsMod {
 
         // Register the KDeferredRegister to the mod-specific event bus
         SignsModBlocks.REGISTRY.register(MOD_BUS)
+        SignsModBlocks.BE_TYPES.register(MOD_BUS)
         SignsModItems.REGISTRY.register(MOD_BUS)
         SignsModItems.CREATIVE_TABS.register(MOD_BUS)
 
