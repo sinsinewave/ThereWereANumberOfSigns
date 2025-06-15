@@ -1,6 +1,8 @@
 package cyou.sinewave.signsmod.block
 
 import com.mojang.blaze3d.vertex.PoseStack
+import com.mojang.math.Axis
+import cyou.sinewave.signsmod.block.property.Surface
 import net.minecraft.client.model.geom.ModelLayers
 import net.minecraft.client.model.geom.ModelPart
 import net.minecraft.client.renderer.MultiBufferSource
@@ -28,8 +30,27 @@ class PosterBlockEntityRenderer(context: BlockEntityRendererProvider.Context): B
     ) {
         poseStack.pushPose()
 
+        poseStack.translate(0.5, 0.0, 0.5)
+        // Rotate on Y according to facing
+        poseStack.mulPose(
+            Axis.YP.rotationDegrees(-blockEntity.blockState.getValue(PosterBlock.HORIZONTAL_FACING).toYRot())
+        )
+
+        // Rotate on X according to surface
+        when(blockEntity.blockState.getValue(PosterBlock.SURFACE)) {
+            Surface.FLOOR   -> {
+                poseStack.mulPose(Axis.XP.rotationDegrees(90.0f))
+                poseStack.translate(0.0, -0.5, -0.5)
+            }
+            Surface.CEILING -> {
+                poseStack.mulPose(Axis.XP.rotationDegrees(-90.0f))
+                poseStack.translate(0.0, -0.5, 0.5)
+            }
+            Surface.WALL -> {}
+        }
+
         // Fix alignment
-        poseStack.translate(0.5, 0.1666667, 0.001)
+        poseStack.translate(0.0, 0.1666667, 0.499)
         // Flatten the model
         // This wastes 4 quads because we're just squishing the 3D banner model
         // However the performance impact should be minimal enough to just not matter
@@ -56,6 +77,7 @@ class PosterBlockEntityRenderer(context: BlockEntityRendererProvider.Context): B
     // Prevent clipping when root block is outside FoV
     override fun getRenderBoundingBox(blockEntity: BannerBlockEntity): AABB {
         val pos = blockEntity.blockPos
-        return AABB.encapsulatingFullBlocks(pos, if (blockEntity.blockState.block is PosterBlock) pos.above() else pos.below())
+        val adjacent = (blockEntity.blockState.block as PosterBlock).getHalfPos(blockEntity.blockState, pos)
+        return AABB.encapsulatingFullBlocks(pos, adjacent)
     }
 }

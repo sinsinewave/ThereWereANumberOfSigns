@@ -11,6 +11,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderer
  * Client bus subscriber.
  * Used for client-only events such as BER registration
  */
+@Suppress("Unused")
 @EventBusSubscriber(modid = SignsMod.ID, value = [Dist.CLIENT], bus = EventBusSubscriber.Bus.MOD)
 object SignsModClient {
     @SubscribeEvent
