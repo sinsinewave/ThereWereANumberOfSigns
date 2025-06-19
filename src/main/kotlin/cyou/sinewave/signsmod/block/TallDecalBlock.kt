@@ -13,6 +13,7 @@ import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
@@ -60,7 +61,7 @@ class TallDecalBlock(properties: Properties, color: DyeColor) : DecalBlock(prope
     }
 
     override fun getShape(state: BlockState, level: BlockGetter, pos: BlockPos, context: CollisionContext): VoxelShape {
-        val ends: Pair<Double, Double> = if (state.getValue(HALF) == DoubleBlockHalf.LOWER) { Pair(5.0, 16.0) } else { Pair(0.0, 11.0) }
+        val ends: Pair<Double, Double> = if (state.getValue(HALF) == DoubleBlockHalf.LOWER) { Pair(5.0, 27.0) } else { Pair(-11.0, 11.0) }
         return when (state.getValue(SURFACE)) {
             Surface.FLOOR -> VoxelShapeUtils.horizontalRotatedBox(
                 2.0, 0.0, ends.first,
@@ -117,6 +118,30 @@ class TallDecalBlock(properties: Properties, color: DyeColor) : DecalBlock(prope
         return InteractionResult.SUCCESS
     }
 
+    override fun onRemove(
+        state: BlockState,
+        level: Level,
+        pos: BlockPos,
+        newState: BlockState,
+        movedByPiston: Boolean
+    ) {
+        // Cancel if we're just hopping states
+        if (newState.block is TallDecalBlock) { return }
+
+        val halfState = level.getBlockState(getHalfPos(state, pos))
+        level.setBlock(
+            getHalfPos(state, pos),
+            if (halfState.fluidState.`is`(Fluids.WATER)) {
+                Blocks.WATER.defaultBlockState()
+            }
+            else {
+                Blocks.AIR.defaultBlockState()
+            },
+            35
+        )
+        level.destroyBlock(pos, true)
+    }
+
     override fun neighborChanged(
         state: BlockState,
         level: Level,
@@ -125,8 +150,9 @@ class TallDecalBlock(properties: Properties, color: DyeColor) : DecalBlock(prope
         neighborPos: BlockPos,
         movedByPiston: Boolean
     ) {
+        // Make sure we erase orphaned blocks on update
         if (!level.getBlockState(getHalfPos(state, pos)).`is`(this)) {
-            level.removeBlock(pos, false)
+            level.destroyBlock(pos, false)
         }
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston)
     }

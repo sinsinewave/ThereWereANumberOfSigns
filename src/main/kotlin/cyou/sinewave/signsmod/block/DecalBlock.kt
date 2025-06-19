@@ -23,7 +23,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.Property
 import net.minecraft.world.level.material.FluidState
 import net.minecraft.world.level.material.Fluids
-import net.minecraft.world.level.material.MapColor
 import net.minecraft.world.phys.BlockHitResult
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
@@ -34,10 +33,6 @@ import net.minecraft.world.phys.shapes.VoxelShape
  */
 open class DecalBlock(properties: Properties, val color: DyeColor) : TransparentBlock (
     properties
-        .noCollission()
-        .instabreak()
-        .noOcclusion()
-        .mapColor(MapColor.NONE)
 ), ITinted, SimpleWaterloggedBlock {
     companion object {
         val DECAL_CHARACTER   : Property<DecalCharacter> = DecalCharacter.property
@@ -117,7 +112,7 @@ open class DecalBlock(properties: Properties, val color: DyeColor) : Transparent
         movedByPiston: Boolean
     ) {
         if (!canSurvive(state, level, pos)) {
-            level.removeBlock(pos, false)
+            level.destroyBlock(pos, true)
         }
     }
 

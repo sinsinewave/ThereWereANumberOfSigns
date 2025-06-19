@@ -16,8 +16,8 @@ import net.minecraft.world.level.LevelAccessor
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.AbstractBannerBlock
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.SimpleWaterloggedBlock
-import net.minecraft.world.level.block.entity.BannerBlockEntity
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
@@ -26,7 +26,6 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf
 import net.minecraft.world.level.block.state.properties.Property
 import net.minecraft.world.level.material.FluidState
 import net.minecraft.world.level.material.Fluids
-import net.minecraft.world.level.material.MapColor
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
 
@@ -36,10 +35,6 @@ import net.minecraft.world.phys.shapes.VoxelShape
 class PosterBlock(color: DyeColor, properties: Properties) : AbstractBannerBlock(
     color,
     properties
-        .noCollission()
-        .instabreak()
-        .noOcclusion()
-        .mapColor(MapColor.NONE)
 ), SimpleWaterloggedBlock {
     init {
         registerDefaultState(stateDefinition.any()
@@ -157,6 +152,45 @@ class PosterBlock(color: DyeColor, properties: Properties) : AbstractBannerBlock
         }
     }
 
+    override fun onRemove(
+        state: BlockState,
+        level: Level,
+        pos: BlockPos,
+        newState: BlockState,
+        movedByPiston: Boolean
+    ) {
+        val halfState = level.getBlockState(getHalfPos(state, pos))
+        level.setBlock(
+            getHalfPos(state, pos),
+            if (halfState.fluidState.`is`(Fluids.WATER)) {
+                Blocks.WATER.defaultBlockState()
+            }
+            else {
+                Blocks.AIR.defaultBlockState()
+            },
+            35
+        )
+        level.destroyBlock(pos, true)
+    }
+
+    override fun neighborChanged(
+        state: BlockState,
+        level: Level,
+        pos: BlockPos,
+        neighborBlock: Block,
+        neighborPos: BlockPos,
+        movedByPiston: Boolean
+    ) {
+        if (!level.getBlockState(getHalfPos(state, pos)).`is`(this)) {
+            level.destroyBlock(pos, false)
+        }
+        else if (!canSurvive(state, level, pos)) {
+            level.destroyBlock(pos, true)
+        }
+        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston)
+    }
+
+    // Annoyingly we need to remake this whole blooming thing from DecalBlock because this class needs to be tied to the Banner inheritance tree
     override fun canSurvive(state: BlockState, level: LevelReader, pos: BlockPos): Boolean {
         // Find block this block is mounted on
         val offset = if (state.getValue(SURFACE) == Surface.CEILING) {
@@ -180,23 +214,8 @@ class PosterBlock(color: DyeColor, properties: Properties) : AbstractBannerBlock
         )
     }
 
-    override fun neighborChanged(
-        state: BlockState,
-        level: Level,
-        pos: BlockPos,
-        neighborBlock: Block,
-        neighborPos: BlockPos,
-        movedByPiston: Boolean
-    ) {
-        if (!level.getBlockState(getHalfPos(state, pos)).`is`(this) || !canSurvive(state, level, pos)) {
-            level.removeBlock(pos, false)
-        }
-
-        super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston)
-    }
-
     override fun getShape(state: BlockState, level: BlockGetter, pos: BlockPos, context: CollisionContext): VoxelShape {
-        val ends: Pair<Double, Double> = if (state.getValue(HALF) == DoubleBlockHalf.LOWER) { Pair(2.0, 16.0) } else { Pair(0.0, 14.0) }
+        val ends: Pair<Double, Double> = if (state.getValue(HALF) == DoubleBlockHalf.LOWER) { Pair(2.0, 30.0) } else { Pair(-14.0, 14.0) }
         return when (state.getValue(SURFACE)) {
             Surface.FLOOR -> VoxelShapeUtils.horizontalRotatedBox(
                 1.0, 0.0, ends.first,

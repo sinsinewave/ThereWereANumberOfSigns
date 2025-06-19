@@ -5,6 +5,8 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.world.item.DyeColor
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockBehaviour
+import net.minecraft.world.level.material.MapColor
+import net.minecraft.world.level.material.PushReaction
 import net.neoforged.neoforge.registries.DeferredBlock
 import net.neoforged.neoforge.registries.DeferredRegister
 import java.util.function.Supplier
@@ -19,17 +21,25 @@ object SignsModBlocks {
 
     val BlockEntities = BlockEntitiesHolder()
 
+    private val DEFAULT_DECAL_PROPS = BlockBehaviour.Properties.of()
+        .strength(0.1f)
+        .noCollission()
+        .instabreak()
+        .noOcclusion()
+        .mapColor(MapColor.NONE)
+        .pushReaction(PushReaction.DESTROY)
+
     init {
         // Generate decal blocks for each dye colour
         for (color in DyeColor.entries) {
             TALL_DECALS.add(REGISTRY.register("${color.serializedName}_tall_decal") { ->
-                TallDecalBlock(BlockBehaviour.Properties.of().strength(0.1f), color)
+                TallDecalBlock(DEFAULT_DECAL_PROPS, color)
             })
             SMALL_DECALS.add(REGISTRY.register("${color.serializedName}_small_decal") { ->
-                DecalBlock(BlockBehaviour.Properties.of().strength(0.1f), color)
+                DecalBlock(DEFAULT_DECAL_PROPS, color)
             })
             POSTERS.add(REGISTRY.register("${color.serializedName}_poster") { ->
-                PosterBlock(color, BlockBehaviour.Properties.of().strength(0.1f))
+                PosterBlock(color, DEFAULT_DECAL_PROPS)
             })
         }
     }
