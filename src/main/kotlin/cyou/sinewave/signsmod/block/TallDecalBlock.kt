@@ -112,9 +112,9 @@ class TallDecalBlock(properties: Properties, color: DyeColor) : DecalBlock(prope
         player: Player,
         hitResult: BlockHitResult
     ): InteractionResult {
-        val halfBlockState = level.getBlockState(getHalfPos(state, pos))
-        (halfBlockState.block as TallDecalBlock).cycleCharacter(halfBlockState, getHalfPos(state, pos), level)
-        cycleCharacter(state, pos, level)
+        val halfState = level.getBlockState(getHalfPos(state, pos))
+        (halfState.block as TallDecalBlock).cycleCharacter(halfState, getHalfPos(state, pos), level, player.isShiftKeyDown)
+        cycleCharacter(state, pos, level, player.isShiftKeyDown)
         return InteractionResult.SUCCESS
     }
 

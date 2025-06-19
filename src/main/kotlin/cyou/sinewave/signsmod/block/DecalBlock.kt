@@ -99,7 +99,7 @@ open class DecalBlock(properties: Properties, val color: DyeColor) : Transparent
         player: Player,
         hitResult: BlockHitResult
     ): InteractionResult {
-        cycleCharacter(state, pos, level)
+        cycleCharacter(state, pos, level, player.isShiftKeyDown)
         return InteractionResult.SUCCESS
     }
 
@@ -136,20 +136,26 @@ open class DecalBlock(properties: Properties, val color: DyeColor) : Transparent
 
     /**
      * Cycle the shown decal character forwards
-     * TODO: Potentially add a direction boolean
-     * @param   state   This block's state
-     * @param   pos     This block's position
-     * @param   level   The level this block is in
+     * @param   state       This block's state
+     * @param   pos         This block's position
+     * @param   level       The level this block is in
+     * @param   decrement   Whether to cycle backwards instead
      */
-    fun cycleCharacter(state: BlockState, pos: BlockPos, level: Level) {
+    fun cycleCharacter(state: BlockState, pos: BlockPos, level: Level, decrement: Boolean = false) {
         // Set character to next one on use, or first one if currently on last
         level.setBlockAndUpdate(pos, state.setValue(
             DecalCharacter.property,
-            if (state.getValue(DecalCharacter.property) < DecalCharacter.entries.last()) {
+            if (!decrement && state.getValue(DecalCharacter.property) < DecalCharacter.entries.last()) {
                 DecalCharacter.entries[state.getValue(DecalCharacter.property).ordinal + 1 ]
             }
-            else {
+            else if (decrement && state.getValue(DecalCharacter.property) > DecalCharacter.entries.first()) {
+                DecalCharacter.entries[state.getValue(DecalCharacter.property).ordinal - 1]
+            }
+            else if (!decrement) {
                 DecalCharacter.entries.first()
+            }
+            else {
+                DecalCharacter.entries.last()
             }
         ))
     }
