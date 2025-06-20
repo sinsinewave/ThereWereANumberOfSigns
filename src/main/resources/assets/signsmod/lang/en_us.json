@@ -50,5 +50,9 @@
   "block.signsmod.purple_poster"    : "Purple Poster",
   "block.signsmod.red_poster"       : "Red Poster",
   "block.signsmod.white_poster"     : "White Poster",
-  "block.signsmod.yellow_poster"    : "Yellow Poster"
+  "block.signsmod.yellow_poster"    : "Yellow Poster",
+
+  "block.signsmod.design_table" : "Design Table",
+
+  "container.signsmod.design_table" : "Design Table"
 }

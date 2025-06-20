@@ -2,6 +2,8 @@ package cyou.sinewave.signsmod
 
 import cyou.sinewave.signsmod.block.PosterBlockEntityRenderer
 import cyou.sinewave.signsmod.block.SignsModBlocks
+import cyou.sinewave.signsmod.gui.DesignTableScreen
+import cyou.sinewave.signsmod.gui.SignsModMenuTypes
 import cyou.sinewave.signsmod.item.PosterItemRenderer
 import cyou.sinewave.signsmod.item.SignsModItems
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer
@@ -9,6 +11,7 @@ import net.neoforged.api.distmarker.Dist
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent
 
@@ -39,5 +42,10 @@ object SignsModClient {
             },
             *SignsModItems.POSTERS.map { it.value() }.toTypedArray()
         )
+    }
+
+    @SubscribeEvent
+    fun registerScreens(event: RegisterMenuScreensEvent) {
+        event.register(SignsModMenuTypes.DESIGN_TABLE.get(), ::DesignTableScreen)
     }
 }

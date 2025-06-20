@@ -1,6 +1,7 @@
 package cyou.sinewave.signsmod.block
 
 import cyou.sinewave.signsmod.SignsMod
+import cyou.sinewave.signsmod.block.designtable.DesignTableBlock
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.item.DyeColor
 import net.minecraft.world.level.block.entity.BlockEntityType
@@ -18,6 +19,8 @@ object SignsModBlocks {
     val TALL_DECALS  = arrayListOf<DeferredBlock<DecalBlock>>()
     val SMALL_DECALS = arrayListOf<DeferredBlock<DecalBlock>>()
     val POSTERS      = arrayListOf<DeferredBlock<PosterBlock>>()
+
+    val DESIGN_TABLE = REGISTRY.register("design_table") { -> DesignTableBlock(BlockBehaviour.Properties.of()) }
 
     val BlockEntities = BlockEntitiesHolder()
 

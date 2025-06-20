@@ -23,6 +23,8 @@ object SignsModItems {
     val SMALL_DECALS = arrayListOf<DeferredItem<BlockItem>>()
     val POSTERS      = arrayListOf<DeferredItem<BlockItem>>()
 
+    val DESIGN_TABLE = REGISTRY.registerSimpleBlockItem(SignsModBlocks.DESIGN_TABLE)
+
     init {
         // Iterate through tall decal blocks and pick dye colour by index
         // Blocks are inserted into their corresponding array by DyeColor entry order
@@ -62,10 +64,15 @@ object SignsModItems {
                 .title(Component.translatable("itemGroup.${SignsMod.ID}"))
                 .icon { ItemStack(TALL_DECALS.last().asItem()) }
                 .displayItems { params, output ->
+                    output.accept { DESIGN_TABLE.get() }
+
                     for (item in TALL_DECALS) {
                         output.accept(item.get())
                     }
                     for (item in SMALL_DECALS) {
+                        output.accept(item.get())
+                    }
+                    for (item in POSTERS) {
                         output.accept(item.get())
                     }
                 }
