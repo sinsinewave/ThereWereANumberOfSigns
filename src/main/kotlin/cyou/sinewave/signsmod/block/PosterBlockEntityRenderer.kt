@@ -33,7 +33,6 @@ class PosterBlockEntityRenderer(context: BlockEntityRendererProvider.Context): B
         if (blockEntity.blockState.getValue(PosterBlock.HALF) == DoubleBlockHalf.UPPER) { return }
 
         poseStack.pushPose()
-
         poseStack.translate(0.5, 0.0, 0.5)
         // Rotate on Y according to facing
         poseStack.mulPose(
@@ -54,11 +53,13 @@ class PosterBlockEntityRenderer(context: BlockEntityRendererProvider.Context): B
         }
 
         // Fix alignment
-        poseStack.translate(0.0, 0.1666667, 0.499)
+        poseStack.translate(0.0, 0.125, 0.499)
         // Flatten the model
         // This wastes 4 quads because we're just squishing the 3D banner model
         // However the performance impact should be minimal enough to just not matter
-        poseStack.scale(0.6666667f,0.6666667f, 0.005f)
+        poseStack.scale(0.7f,0.7f, 0.005f)
+        poseStack.rotateAround(Axis.ZP.rotationDegrees(180f), 0.5f, 0.5f, 0.5f)
+        poseStack.translate(1.0, -1.5, 0.0)
 
         val vertexConsumer = ModelBakery.BANNER_BASE.buffer(bufferSource, RenderType::entitySolid)
         // Render base layer

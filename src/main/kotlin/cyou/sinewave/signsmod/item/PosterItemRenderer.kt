@@ -28,8 +28,8 @@ class PosterItemRenderer() : BlockEntityWithoutLevelRenderer(
 
         poseStack.pushPose()
 
-        poseStack.translate(0.0, 0.0, 0.75)
-        poseStack.scale(1.0f, 1.0f, 200.0f)
+        poseStack.translate(0.25, 0.375, 0.35)
+        poseStack.scale(0.5f, 0.5f, 150.0f)
         Minecraft.getInstance().blockEntityRenderDispatcher.renderItem(poster, poseStack, bufferSource, packedLight, packedOverlay)
 
         poseStack.popPose()
