@@ -159,6 +159,8 @@ class PosterBlock(color: DyeColor, properties: Properties) : AbstractBannerBlock
         newState: BlockState,
         movedByPiston: Boolean
     ) {
+        // Handle state changes
+        if (state.block == newState.block) { return }
         val halfState = level.getBlockState(getHalfPos(state, pos))
         level.setBlock(
             getHalfPos(state, pos),
