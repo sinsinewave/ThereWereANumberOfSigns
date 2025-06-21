@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_paper": {
+    "has_small_decal": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:paper"
+            "items": "#signsmod:small_decals"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_paper"
+      "has_small_decal"
     ]
   ],
   "rewards": {

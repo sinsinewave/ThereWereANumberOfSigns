@@ -39,7 +39,7 @@ class SignsModLootTableProvider(
                         createBannerDrop(block.value())
                     )
                 }
-                else if (block.value() is DecalBlock) {
+                else {
                     dropSelf(block.value())
                 }
             }
