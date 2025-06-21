@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "minecraft:block/dark_oak_planks",
+    "east": "signsmod:block/design_table_side",
+    "north": "signsmod:block/design_table_front",
+    "particle": "signsmod:block/dark_oak_planks",
+    "south": "signsmod:block/design_table_front",
+    "up": "signsmod:block/design_table_top",
+    "west": "signsmod:block/design_table_side"
+  }
+}

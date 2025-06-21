@@ -4,8 +4,10 @@ import cyou.sinewave.signsmod.SignsMod
 import cyou.sinewave.signsmod.block.designtable.DesignTableBlock
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.item.DyeColor
+import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockBehaviour
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument
 import net.minecraft.world.level.material.MapColor
 import net.minecraft.world.level.material.PushReaction
 import net.neoforged.neoforge.registries.DeferredBlock
@@ -20,7 +22,13 @@ object SignsModBlocks {
     val SMALL_DECALS = arrayListOf<DeferredBlock<DecalBlock>>()
     val POSTERS      = arrayListOf<DeferredBlock<PosterBlock>>()
 
-    val DESIGN_TABLE = REGISTRY.register("design_table") { -> DesignTableBlock(BlockBehaviour.Properties.of()) }
+    val DESIGN_TABLE = REGISTRY.register("design_table") { -> DesignTableBlock(
+    BlockBehaviour.Properties.of()
+        .mapColor(MapColor.WOOD)
+        .instrument(NoteBlockInstrument.BASS)
+        .strength(2.5f)
+        .sound(SoundType.WOOD).ignitedByLava())
+    }
 
     val BlockEntities = BlockEntitiesHolder()
 

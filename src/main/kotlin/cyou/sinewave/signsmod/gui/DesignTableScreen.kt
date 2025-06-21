@@ -20,14 +20,20 @@ class DesignTableScreen(
     companion object {
         private val BACKGROUND = ResourceLocation.fromNamespaceAndPath(SignsMod.ID, "textures/gui/design_table.png")
         // We can just use the loom and stonecutter sprites here, no sense duplicating them
-        private val DYE_PLACEHOLDER = ResourceLocation.withDefaultNamespace("container/loom/dye_slot")
-        private val BUTTON          = ResourceLocation.withDefaultNamespace("container/stonecutter/recipe")
-        private val BUTTON_SELECTED = ResourceLocation.withDefaultNamespace("container/stonecutter/recipe_selected")
-        private val BUTTON_HOVER    = ResourceLocation.withDefaultNamespace("container/stonecutter/recipe_highlighted")
+        private val DYE_PLACEHOLDER   = ResourceLocation.withDefaultNamespace("container/loom/dye_slot")
+        private val PAPER_PLACEHOLDER = ResourceLocation.fromNamespaceAndPath(SignsMod.ID, "paper_slot")
+        private val BUTTON            = ResourceLocation.withDefaultNamespace("container/stonecutter/recipe")
+        private val BUTTON_SELECTED   = ResourceLocation.withDefaultNamespace("container/stonecutter/recipe_selected")
+        private val BUTTON_HOVER      = ResourceLocation.withDefaultNamespace("container/stonecutter/recipe_highlighted")
 
         private const val SLOTS_X = 5
         private const val SLOTS_START_X = 48
         private const val SLOTS_START_Y = 16
+    }
+
+    override fun render(guiGraphics: GuiGraphics, mouseX: Int, mouseY: Int, partialTick: Float) {
+        super.render(guiGraphics, mouseX, mouseY, partialTick)
+        renderTooltip(guiGraphics, mouseX, mouseY)
     }
 
     override fun renderBg(
@@ -40,6 +46,9 @@ class DesignTableScreen(
 
         if (!menu.dyeSlot.hasItem()) {
             guiGraphics.blitSprite(DYE_PLACEHOLDER, leftPos+menu.dyeSlot.x, topPos+menu.dyeSlot.y, 16, 16)
+        }
+        if (!menu.paperSlot.hasItem()) {
+            guiGraphics.blitSprite(PAPER_PLACEHOLDER, leftPos+menu.paperSlot.x, topPos+menu.paperSlot.y, 16, 16)
         }
 
         for ((idx, item) in menu.getCraftables().withIndex()) {
@@ -59,6 +68,17 @@ class DesignTableScreen(
                 BUTTON
             }
             guiGraphics.blitSprite(buttonSprite, leftPos+SLOTS_START_X+(idx%4)*16, topPos+SLOTS_START_Y+(idx/4)*16, 16, 18)
+        }
+    }
+
+    override fun renderTooltip(guiGraphics: GuiGraphics, x: Int, y: Int) {
+        super.renderTooltip(guiGraphics, x, y)
+        for ((idx, item) in menu.getCraftables().withIndex()) {
+            val slotX = leftPos+SLOTS_START_X+(idx%SLOTS_X)*16
+            val slotY = topPos+SLOTS_START_Y+(idx/SLOTS_X)*18
+            if (x in slotX..slotX+16 && y in slotY..slotY+18) {
+                guiGraphics.renderTooltip(font, item.value().defaultInstance, x, y)
+            }
         }
     }
 
