@@ -73,20 +73,21 @@ open class DecalBlock(properties: Properties, val color: DyeColor) : Transparent
     }
 
     override fun getShape(state: BlockState, level: BlockGetter, pos: BlockPos, context: CollisionContext): VoxelShape {
+        val addend = if (state.getValue(DecalCharacter.property).isTaller) { 1 } else { 0 }
         return when (state.getValue(SURFACE)) {
             Surface.FLOOR -> VoxelShapeUtils.horizontalRotatedBox(
                 3.0, 0.0, 1.0,
-                13.0, 1.0, 15.0,
+                13.0, 1.0, 15.0 + addend,
                 state.getValue(HORIZONTAL_FACING).opposite
             )
             Surface.WALL -> VoxelShapeUtils.horizontalRotatedBox(
                 3.0, 1.0, 0.0,
-                13.0, 15.0, 1.0,
+                13.0, 15.0 + addend, 1.0,
                 state.getValue(HORIZONTAL_FACING)
             )
             Surface.CEILING -> VoxelShapeUtils.horizontalRotatedBox(
                 3.0, 15.0, 1.0,
-                13.0, 16.0, 15.0,
+                13.0, 16.0, 15.0 + addend,
                 state.getValue(HORIZONTAL_FACING)
             )
         }

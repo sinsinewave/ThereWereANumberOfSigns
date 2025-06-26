@@ -24,7 +24,7 @@ class SignsModBlockStateProvider(
             else if (block.id.path.contains("small_decal")) { "small_decal" }
             else { /* Not a decal we care about, skip */ continue }
 
-            val stateBuilder = getMultipartBuilder(block.get())
+            //val stateBuilder = getMultipartBuilder(block.get())
             for (character in DecalCharacter.entries) {
                 for (half in DoubleBlockHalf.entries) {
                     val isDouble = block.value() is TallDecalBlock
@@ -32,21 +32,33 @@ class SignsModBlockStateProvider(
                     // If we're doing a single block decal, just break on the second half
                     if (!isDouble && half == DoubleBlockHalf.entries.last()) { break }
 
+                    var suffix = if (isDouble) {"_${half.serializedName}"} else {""}
+
+                    if (character.isTaller && (!isDouble || half == DoubleBlockHalf.UPPER)) {
+                        suffix += "_accented"
+                    }
+
                     val charModel = models().withExistingParent(
-                        "${prefix}_${character.serialName}" + if (isDouble) {"_${half.serializedName}"} else { "" },
-                        this.mcLoc("signsmod:block/${prefix}" + if (isDouble) {"_${half.serializedName}"} else { "" })
+                        "${prefix}_${character.serialName}" + suffix,
+                        this.mcLoc("signsmod:block/${prefix}" + suffix)
                     )
                         .texture("particle", mcLoc("block/${block.value().color.serializedName}_concrete"))
                         .texture("0", "signsmod:block/${prefix}_${character.serialName}")
 
-
                     for (facing in Direction.entries) {
-                        if (facing == Direction.DOWN || facing == Direction.UP) {
-                            continue
-                        }
                         for (surface in Surface.entries) {
-                            val state = stateBuilder.part()
-                                .modelFile(charModel)
+                            if (facing == Direction.DOWN || facing == Direction.UP) { continue }
+
+                            var state = getVariantBuilder(block.get()).partialState()
+                                .with(DecalCharacter.property, character)
+                                .with(BlockStateProperties.HORIZONTAL_FACING, facing)
+                                .with(Surface.property, surface)
+
+                            if (isDouble) {
+                                state = state.with(BlockStateProperties.DOUBLE_BLOCK_HALF, half)
+                            }
+
+                            state.modelForState()
                                 .rotationY(
                                     when (facing) {
                                         Direction.NORTH -> 0
@@ -63,15 +75,8 @@ class SignsModBlockStateProvider(
                                         Surface.CEILING -> 270
                                     }
                                 )
+                                .modelFile(charModel)
                                 .addModel()
-                                .condition(BlockStateProperties.HORIZONTAL_FACING, facing)
-                                .condition(Surface.property, surface)
-                                .condition(DecalCharacter.property, character)
-                            // Add half if block is tall
-                            if (isDouble) {
-                                state.condition(BlockStateProperties.DOUBLE_BLOCK_HALF, half)
-                            }
-                            state.end()
                         }
                     }
                 }

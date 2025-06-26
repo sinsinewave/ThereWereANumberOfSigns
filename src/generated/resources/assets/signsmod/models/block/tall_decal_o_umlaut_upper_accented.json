@@ -1,0 +1,7 @@
+{
+  "parent": "signsmod:block/tall_decal_upper_accented",
+  "textures": {
+    "0": "signsmod:block/tall_decal_o_umlaut",
+    "particle": "minecraft:block/black_concrete"
+  }
+}

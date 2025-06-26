@@ -1,5 +1,6 @@
 package cyou.sinewave.signsmod.block
 
+import cyou.sinewave.signsmod.block.property.DecalCharacter
 import cyou.sinewave.signsmod.block.property.Surface
 import cyou.sinewave.signsmod.util.VoxelShapeUtils
 import net.minecraft.core.BlockPos
@@ -61,7 +62,8 @@ class TallDecalBlock(properties: Properties, color: DyeColor) : DecalBlock(prope
     }
 
     override fun getShape(state: BlockState, level: BlockGetter, pos: BlockPos, context: CollisionContext): VoxelShape {
-        val ends: Pair<Double, Double> = if (state.getValue(HALF) == DoubleBlockHalf.LOWER) { Pair(5.0, 27.0) } else { Pair(-11.0, 11.0) }
+        val addend = if (state.getValue(DecalCharacter.property).isTaller) { 5 } else { 0 }
+        val ends: Pair<Double, Double> = if (state.getValue(HALF) == DoubleBlockHalf.LOWER) { Pair(5.0, 27.0 + addend) } else { Pair(-11.0, 11.0 + addend) }
         return when (state.getValue(SURFACE)) {
             Surface.FLOOR -> VoxelShapeUtils.horizontalRotatedBox(
                 2.0, 0.0, ends.first,

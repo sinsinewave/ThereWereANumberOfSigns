@@ -1,0 +1,7 @@
+{
+  "parent": "signsmod:block/small_decal",
+  "textures": {
+    "0": "signsmod:block/small_decal_eszett",
+    "particle": "minecraft:block/black_concrete"
+  }
+}

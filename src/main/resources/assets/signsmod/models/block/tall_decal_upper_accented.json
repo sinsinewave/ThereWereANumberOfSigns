@@ -1,0 +1,15 @@
+{
+	"ambientocclusion": false,
+	"render_type" : "cutout",
+	"texture_size": [16, 32],
+	"elements": [
+		{
+			"from": [2, 0, 0.05],
+			"to": [14, 16, 0.06],
+			"faces": {
+				"south": {"uv": [2,  0, 14, 8], "texture": "#0", "tintindex": 1},
+				"north": {"uv": [14, 0,  2, 8], "texture": "#0", "tintindex": 1}
+			}
+		}
+	]
+}
