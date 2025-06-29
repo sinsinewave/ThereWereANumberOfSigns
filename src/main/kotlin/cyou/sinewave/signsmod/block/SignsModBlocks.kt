@@ -50,7 +50,7 @@ object SignsModBlocks {
                 DecalBlock(DEFAULT_DECAL_PROPS, color)
             })
             POSTERS.add(REGISTRY.register("${color.serializedName}_poster") { ->
-                PosterBlock(color, DEFAULT_DECAL_PROPS)
+                PosterBlock(DEFAULT_DECAL_PROPS, color)
             })
         }
     }

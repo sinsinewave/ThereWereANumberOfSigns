@@ -32,7 +32,7 @@ import net.minecraft.world.phys.shapes.VoxelShape
 // Unfortunately a lot of this class replicates TallDecalBlock and DecalBlock
 // However we cannot inherit those as we are already inheriting AbstractBannerBlock
 // Maybe could be refactored into some kind of composition thing if we end up with more cases like this?
-class PosterBlock(color: DyeColor, properties: Properties) : AbstractBannerBlock(
+class PosterBlock(properties: Properties, color: DyeColor) : AbstractBannerBlock(
     color,
     properties
 ), SimpleWaterloggedBlock {
@@ -56,7 +56,7 @@ class PosterBlock(color: DyeColor, properties: Properties) : AbstractBannerBlock
             codecBuilder.group<DyeColor, Properties>(
                 DyeColor.CODEC.fieldOf("color").forGetter<PosterBlock> { obj: PosterBlock -> obj.color },
                 propertiesCodec<PosterBlock>()
-            ).apply<PosterBlock>(codecBuilder) { color: DyeColor, properties: Properties -> PosterBlock(color, properties) }
+            ).apply<PosterBlock>(codecBuilder) { color: DyeColor, properties: Properties -> PosterBlock(properties, color) }
         }
 
         fun byColor(color: DyeColor): Block { return SignsModBlocks.POSTERS.first { it.value().color == color }.value() }
