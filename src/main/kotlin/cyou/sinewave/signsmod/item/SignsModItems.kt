@@ -2,6 +2,7 @@ package cyou.sinewave.signsmod.item
 
 import cyou.sinewave.signsmod.SignsMod
 import cyou.sinewave.signsmod.block.SignsModBlocks
+import net.minecraft.core.component.DataComponents
 import net.minecraft.core.registries.Registries
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.BlockItem
@@ -9,6 +10,7 @@ import net.minecraft.world.item.CreativeModeTab
 import net.minecraft.world.item.DyeColor
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.level.block.entity.BannerPatternLayers
 import net.neoforged.neoforge.registries.DeferredItem
 import net.neoforged.neoforge.registries.DeferredRegister
 
@@ -53,7 +55,7 @@ object SignsModItems {
             POSTERS.add(REGISTRY.register(block.id.path) { ->
                 PosterBlockItem(
                     block.value(),
-                    Item.Properties()
+                    Item.Properties().stacksTo(16).component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
                 )
             })
         }
