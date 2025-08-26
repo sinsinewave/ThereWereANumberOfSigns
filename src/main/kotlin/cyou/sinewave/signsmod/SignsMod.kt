@@ -3,6 +3,7 @@ package cyou.sinewave.signsmod
 import cyou.sinewave.signsmod.block.SignsModBlocks
 import cyou.sinewave.signsmod.gui.SignsModMenuTypes
 import cyou.sinewave.signsmod.item.SignsModItems
+import cyou.sinewave.signsmod.recipe.SignsModRecipes
 import net.minecraft.client.Minecraft
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
@@ -37,6 +38,7 @@ object SignsMod {
         SignsModItems.REGISTRY.register(MOD_BUS)
         SignsModMenuTypes.REGISTRY.register(MOD_BUS)
         SignsModItems.CREATIVE_TABS.register(MOD_BUS)
+        SignsModRecipes.RECIPE_SERIALIZERS.register(MOD_BUS)
 
         runForDist(
             clientTarget = {

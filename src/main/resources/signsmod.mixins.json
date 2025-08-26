@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "cyou.sinewave.signsmod.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "IgnorePostersInBannerDuplicationMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
